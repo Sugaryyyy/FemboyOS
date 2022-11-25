@@ -3,7 +3,7 @@ set -e
 echo "Preparing ${LFS:?}"
 
 chown -R root:root $LFS/{usr,lib,var,etc,bin,sbin,tools,lib64}
-mkdir -pv $LFS/{dev,proc,sys,run}
+mkdir -pv $LFS/{dev,proc,sys,run,tempscripts}
 
 bash -e $DIST_ROOT/build_env/build_scripts/mount-virt.sh
 
@@ -61,11 +61,14 @@ users:x:999:
 nogroup:x:65534:
 EOF
 
+cp $DIST_ROOT/build_env/build_scripts/finish-chroot.sh $LFS/tempscripts
+
 chroot "$LFS" /usr/bin/env -i   \
     HOME=/root                  \
     TERM="$TERM"                \
     PS1='(lfs chroot) \u:\w\$ ' \
     PATH=/usr/bin:/usr/sbin     \
-    /dist/build_env/build_scripts/finish-chroot.sh
+    bash /tempscripts/finish-chroot.sh
 
 bash -e $DIST_ROOT/build_env/build_scripts/umount-virt.sh
+
