@@ -2,7 +2,7 @@ set -e
 
 echo "Preparing ${LFS:?}"
 
-chown -R root:root $LFS/{usr,lib,var,etc,bin,sbin,tools,lib64}
+chown -R root:root $LFS/{usr,lib,var,etc,bin,sbin,lib64}
 mkdir -pv $LFS/{dev,proc,sys,run,tempscripts}
 
 bash -e $DIST_ROOT/build_env/build_scripts/mount-virt.sh
@@ -72,3 +72,13 @@ chroot "$LFS" /usr/bin/env -i   \
 
 bash -e $DIST_ROOT/build_env/build_scripts/umount-virt.sh
 
+echo "Welcome back to your host, you're back from chroot! >w<"
+
+echo "Backing up"
+
+rm -rf $LFS/sources
+echo "Compressing the system, this might take a long time :3"
+echo "..."
+cd $LFS
+tar -cJpf $HOME/lfs-temp-tools- 11.2-systemd.tar.xz .
+echo "Compressing complete! >w<"

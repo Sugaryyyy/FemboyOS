@@ -5,5 +5,5 @@ umount $LFS/dist
 umount $LFS/run
 umount $LFS/sys
 umount $LFS/proc
-umount $LFS/dev/pts
+umount $LFS/dev/pts/
 umount $LFS/dev
