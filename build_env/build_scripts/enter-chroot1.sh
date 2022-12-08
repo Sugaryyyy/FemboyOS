@@ -3,7 +3,7 @@ echo "Entering chroot: ${LFS:?}"
 bash -e $DIST_ROOT/build_env/build_scripts/mount-virt.sh
 
 cp $DIST_ROOT/build_env/build_scripts/inchroot.sh $LFS
-echo "Run ./inchroot.sh to continue." 
+echo "Run bash inchroot.sh to continue." 
 chroot "$LFS" /usr/bin/env -i   \
     HOME=/root                  \
     TERM="$TERM"                \

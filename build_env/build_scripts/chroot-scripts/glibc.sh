@@ -1,7 +1,7 @@
 set -x
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
 
-echo "GLIBC COMPILING INCOMING >w< >w< >w<"
+echo "GLIBC COMPILE INCOMING >w< >w< >w<"
 
 patch -Np1 -i ../glibc-2.36-fhs-1.patch
 
@@ -116,9 +116,9 @@ zic -d $ZONEINFO -p America/New_York
 unset ZONEINFO
 
 echo "Select Time zone"
+echo 
 echo
-echo
-echo
+echo 
 sleep 2
 export TIMEZONE=$(bash tzselect)
 

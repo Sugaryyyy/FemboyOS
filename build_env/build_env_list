@@ -10,11 +10,11 @@ https://www.sourceware.org/pub/bzip2/bzip2-1.0.8.tar.gz
 https://github.com/libcheck/check/releases/download/0.15.2/check-0.15.2.tar.gz
 https://ftp.gnu.org/gnu/coreutils/coreutils-9.1.tar.xz
 https://dbus.freedesktop.org/releases/dbus/dbus-1.14.0.tar.xz
-https://ftp.gnu.org/gnu/dejagnu/dejagnu-1.6.3.tar.gz
+https://ftp.gnu.org/gnu/dejagnu/dejagnu-1.6.3.tar.gz 
 https://ftp.gnu.org/gnu/diffutils/diffutils-3.8.tar.xz
 https://downloads.sourceforge.net/project/e2fsprogs/e2fsprogs/v1.46.5/e2fsprogs-1.46.5.tar.gz
 https://sourceware.org/ftp/elfutils/0.187/elfutils-0.187.tar.bz2
-https://prdownloads.sourceforge.net/expat/expat-2.4.8.tar.xz
+https://prdownloads.sourceforge.net/expat/expat-2.5.0.tar.xz
 https://prdownloads.sourceforge.net/expect/expect5.45.4.tar.gz
 https://astron.com/pub/file/file-5.42.tar.gz
 https://ftp.gnu.org/gnu/findutils/findutils-4.9.0.tar.xz
@@ -76,7 +76,7 @@ https://anduin.linuxfromscratch.org/LFS/vim-9.0.0228.tar.gz
 https://anduin.linuxfromscratch.org/LFS/wheel-0.37.1.tar.gz
 https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-2.46.tar.gz
 https://tukaani.org/xz/xz-5.2.6.tar.xz
-https://zlib.net/zlib-1.2.12.tar.xz
+https://zlib.net/zlib-1.2.13.tar.xz
 https://github.com/facebook/zstd/releases/download/v1.5.2/zstd-1.5.2.tar.gz
 https://www.linuxfromscratch.org/patches/lfs/11.2/bzip2-1.0.8-install_docs-1.patch
 https://www.linuxfromscratch.org/patches/lfs/11.2/coreutils-9.1-i18n-1.patch
@@ -84,3 +84,5 @@ https://www.linuxfromscratch.org/patches/lfs/11.2/glibc-2.36-fhs-1.patch
 https://www.linuxfromscratch.org/patches/lfs/11.2/kbd-2.5.1-backspace-1.patch
 https://www.linuxfromscratch.org/patches/lfs/11.2/systemd-251-glibc_2.36_fix-1.patch
 https://www.linuxfromscratch.org/patches/lfs/11.2/zstd-1.5.2-upstream_fixes-1.patch
+https://www.nano-editor.org/dist/v6/nano-6.4.tar.xz
+https://www.kernel.org/pub/software/scm/git/git-2.38.1.tar.xz

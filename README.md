@@ -1,3 +1,3 @@
 # FemboyOS
-Femboy GNU/Linux distro.
+Femboy GNU/Linux distro, based from LFS.
 **WIP**
