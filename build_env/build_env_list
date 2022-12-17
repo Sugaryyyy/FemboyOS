@@ -85,4 +85,9 @@ https://www.linuxfromscratch.org/patches/lfs/11.2/kbd-2.5.1-backspace-1.patch
 https://www.linuxfromscratch.org/patches/lfs/11.2/systemd-251-glibc_2.36_fix-1.patch
 https://www.linuxfromscratch.org/patches/lfs/11.2/zstd-1.5.2-upstream_fixes-1.patch
 https://www.nano-editor.org/dist/v6/nano-6.4.tar.xz
-https://www.kernel.org/pub/software/scm/git/git-2.38.1.tar.xz
+https://github.com/dylanaraps/neofetch/archive/7.1.0.tar.gz
+https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.bz2
+http://libndp.org/files/libndp-1.8.tar.gz
+https://download.gnome.org/sources/NetworkManager/1.38/NetworkManager-1.38.4.tar.xz
+https://ftp.isc.org/isc/dhcp/4.4.3/dhcp-4.4.3.tar.gz
+https://curl.se/download/curl-7.84.0.tar.xz

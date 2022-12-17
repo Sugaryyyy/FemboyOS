@@ -3,5 +3,6 @@ chroot "$LFS" /usr/bin/env -i   \
     TERM="$TERM"                \
     PS1='(FemboyOS chroot >w<) \u:\w\$ ' \
     PATH=/usr/bin:/usr/sbin     \
-    bash --login                  
+    bash --login      
 bash -e $DIST_ROOT/build_env/build_scripts/umount-virt.sh
+

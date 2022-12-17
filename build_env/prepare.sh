@@ -12,7 +12,6 @@ do
     fi
 
 done; 
-
 mkdir -pv $LFS/{bin,etc,lib,sbin,usr,var,lib64,tools}
 
 if ! test $(id -u distbuild) ; then

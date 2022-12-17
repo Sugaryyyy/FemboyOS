@@ -1,5 +1,4 @@
 echo "Running from chroot!"
-bash -e /dist/build_env/build_scripts/test.sh
 echo
 echo
 echo "Building stuff"
@@ -63,7 +62,7 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/diffutils.sh diffutils-3.8.
 bash -e /dist/build_env/build_scripts/chroot-scripts/gawk.sh gawk-5.1.1.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/findutils.sh findutils-4.9.0.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/groff.sh groff-1.22.4.tar.gz
-bash -e /dist/build_env/build_scripts/chroot-scripts/grub-legacy.sh grub-2.06.tar.xz #Uncomment if you want to build for a Legacy instead of a UEFI system :3
+#bash -e /dist/build_env/build_scripts/chroot-scripts/grub-legacy.sh grub-2.06.tar.xz #Uncomment if you want to build for a Legacy instead of a UEFI system :3
 bash -e /dist/build_env/build_scripts/chroot-scripts/gzip.sh gzip-1.12.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/iproute2.sh iproute2-5.19.0.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/kbd.sh kbd-2.5.1.tar.xz
@@ -83,6 +82,13 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/procps-ng.sh procps-ng-4.0.
 bash -e /dist/build_env/build_scripts/chroot-scripts/util-linux.sh util-linux-2.38.1.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/e2fsprogs.sh e2fsprogs-1.46.5.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/strip.sh # Strips debugging symbols.
-bash -e /dist/build_env/build_scripts/chroot-scripts/git.sh git-2.38.1.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/neofetch.sh
+bash -e /dist/build_env/build_scripts/chroot-scripts/neofetch.sh 
+bash -e /dist/build_env/build_scripts/chroot-scripts/jansson.sh jansson-2.14.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/libndp.sh libndp-1.8.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/dhcp.sh dhcp-4.4.3.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/curl.sh curl-7.84.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/networksetup.sh 
+bash -e /dist/build_env/build_scripts/chroot-scripts/networkmanager.sh NetworkManager-1.38.4.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/consoleconfig.sh
+
 bash -e /dist/build_env/build_scripts/chroot-scripts/cleanup.sh
