@@ -1,6 +1,11 @@
 echo "Dist Root: ${DIST_ROOT:?}"
 echo "LFS: ${LFS:?}"
 
+if test $(whoami) == "root" ; then
+    echo "Don't run this script as root >w<"
+    exit -1
+fi
+
 mkdir -p $LFS/sources
 
 for f in $(cat $DIST_ROOT/build_env/build_env_list)

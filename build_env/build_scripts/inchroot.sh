@@ -90,5 +90,6 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/curl.sh curl-7.84.0.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/networksetup.sh 
 bash -e /dist/build_env/build_scripts/chroot-scripts/networkmanager.sh NetworkManager-1.38.4.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/consoleconfig.sh
+bash -e /dist/build_env/build_scripts/chroot-scripts/dpkg.sh dpkg_1.18.24.tar.xz
 
 bash -e /dist/build_env/build_scripts/chroot-scripts/cleanup.sh
