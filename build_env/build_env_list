@@ -85,10 +85,12 @@ https://www.linuxfromscratch.org/patches/lfs/11.2/kbd-2.5.1-backspace-1.patch
 https://www.linuxfromscratch.org/patches/lfs/11.2/systemd-251-glibc_2.36_fix-1.patch
 https://www.linuxfromscratch.org/patches/lfs/11.2/zstd-1.5.2-upstream_fixes-1.patch
 https://www.nano-editor.org/dist/v6/nano-6.4.tar.xz
-https://github.com/dylanaraps/neofetch/archive/7.1.0.tar.gz
 https://github.com/akheron/jansson/releases/download/v2.14/jansson-2.14.tar.bz2
 http://libndp.org/files/libndp-1.8.tar.gz
 https://download.gnome.org/sources/NetworkManager/1.38/NetworkManager-1.38.4.tar.xz
 https://ftp.isc.org/isc/dhcp/4.4.3/dhcp-4.4.3.tar.gz
 https://curl.se/download/curl-7.84.0.tar.xz
-cdn-fastly.deb.debian.org/debian/pool/main/d/dpkg/dpkg_1.18.24.tar.xz
+https://www.sudo.ws/dist/sudo-1.9.11p3.tar.gz
+https://github.com/plougher/squashfs-tools/archive/refs/tags/4.5.1.zip
+https://sourceforge.net/projects/cdrtools/files/cdrtools-3.01.tar.bz2
+https://unifoundry.com/pub/unifont/unifont-14.0.04/font-builds/unifont-14.0.04.pcf.gz

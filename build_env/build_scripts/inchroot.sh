@@ -75,6 +75,7 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/vim.sh vim-9.0.0228.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/nano.sh nano-6.4.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/markupsafe.sh MarkupSafe-2.1.1.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/jinja2.sh Jinja2-3.1.2.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libcap.sh libcap-2.65.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/systemd.sh systemd-251.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/d-bus.sh dbus-1.14.0.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/man-db.sh man-db-2.10.2.tar.xz
@@ -82,14 +83,24 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/procps-ng.sh procps-ng-4.0.
 bash -e /dist/build_env/build_scripts/chroot-scripts/util-linux.sh util-linux-2.38.1.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/e2fsprogs.sh e2fsprogs-1.46.5.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/strip.sh # Strips debugging symbols.
-bash -e /dist/build_env/build_scripts/chroot-scripts/neofetch.sh 
-bash -e /dist/build_env/build_scripts/chroot-scripts/jansson.sh jansson-2.14.tar.bz2
-bash -e /dist/build_env/build_scripts/chroot-scripts/libndp.sh libndp-1.8.tar.gz
-bash -e /dist/build_env/build_scripts/chroot-scripts/dhcp.sh dhcp-4.4.3.tar.gz
-bash -e /dist/build_env/build_scripts/chroot-scripts/curl.sh curl-7.84.0.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/networksetup.sh 
-bash -e /dist/build_env/build_scripts/chroot-scripts/networkmanager.sh NetworkManager-1.38.4.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/consoleconfig.sh
-bash -e /dist/build_env/build_scripts/chroot-scripts/dpkg.sh dpkg_1.18.24.tar.xz
-
 bash -e /dist/build_env/build_scripts/chroot-scripts/cleanup.sh
+bash -e /dist/build_env/build_scripts/chroot-scripts/inputrc.sh
+bash -e /dist/build_env/build_scripts/chroot-scripts/shells.sh
+bash -e /dist/build_env/build_scripts/chroot-scripts/systemdconf.sh
+bash -e /dist/build_env/build_scripts/chroot-scripts/fstab.sh
+
+bash -e /dist/build_env/build_scripts/chroot-scripts/linux-5.19.2.sh linux-5.19.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/sudo.sh sudo-1.9.11p3.tar.gz
+
+
+
+#bash -e /dist/build_env/build_scripts/chroot-scripts/grub-legacy-conf # WARNING! This command installs FemboyOS to your HOST machine in Legacy mode
+# If you do not want to install FemboyOS to your host, do not uncomment the line above. 
+
+bash -e /dist/build_env/build_scripts/chroot-scripts/grub-efi.sh # Comment this if you're building for a Legacy system.
+#bash -e /dist/build_env/build_scripts/chroot-scripts/grub-efi-config.sh # WARNING! This command installs FemboyOS to your HOST machine in UEFI mode!
+# If you do not want to install FemboyOS to your host, do not uncomment the line above. 
+
+bash -e /dist/build_env/build_scripts/chroot-scripts/lsb-release.sh
+
+bash -e /dist/build_env/build_scripts/chroot-scripts/neofetch.sh 
