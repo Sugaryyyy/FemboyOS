@@ -92,8 +92,6 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/fstab.sh
 bash -e /dist/build_env/build_scripts/chroot-scripts/linux-5.19.2.sh linux-5.19.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/sudo.sh sudo-1.9.11p3.tar.gz
 
-
-
 #bash -e /dist/build_env/build_scripts/chroot-scripts/grub-legacy-conf # WARNING! This command installs FemboyOS to your HOST machine in Legacy mode
 # If you do not want to install FemboyOS to your host, do not uncomment the line above. 
 
@@ -101,6 +99,9 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/grub-efi.sh # Comment this 
 #bash -e /dist/build_env/build_scripts/chroot-scripts/grub-efi-config.sh # WARNING! This command installs FemboyOS to your HOST machine in UEFI mode!
 # If you do not want to install FemboyOS to your host, do not uncomment the line above. 
 
+bash -e /dist/build_env/build_scripts/chroot-scripts/which.sh which-2.21.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/squashfs-tools.sh
+bash -e /dist/build_env/build_scripts/chroot-scripts/cdrtools.sh cdrtools-3.01.tar.bz2 
 bash -e /dist/build_env/build_scripts/chroot-scripts/lsb-release.sh
 
 bash -e /dist/build_env/build_scripts/chroot-scripts/neofetch.sh 

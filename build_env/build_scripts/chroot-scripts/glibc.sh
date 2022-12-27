@@ -19,9 +19,6 @@ echo "rootsbindir=/usr/sbin" > configparms
 
 make
 
-echo "Running make check, expect some errors, read more on https://www.linuxfromscratch.org/lfs/view/stable-systemd/chapter08/glibc.html"
-
-bash /dist/build_env/build_scripts/chroot-scripts/make_check.sh &
 
 touch /etc/ld.so.conf
 
