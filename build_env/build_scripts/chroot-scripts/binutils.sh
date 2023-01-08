@@ -3,6 +3,7 @@ echo "Running PTY test."
 expect -c "spawn ls"
 echo
 
+rm -rf   build
 mkdir -v build
 cd       build
 
@@ -17,8 +18,6 @@ cd       build
              --with-system-zlib
 
 make tooldir=/usr
-
-make -k check &
 
 make tooldir=/usr install
 

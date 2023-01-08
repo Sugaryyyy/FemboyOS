@@ -5,6 +5,9 @@ echo "Building stuff"
 echo
 echo
 echo
+
+ln -f /usr/bin/bash bash
+
 bash -e /dist/build_env/build_scripts/chroot-scripts/man-pages.sh man-pages-5.13.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/lana-etc.sh 
 bash -e /dist/build_env/build_scripts/chroot-scripts/glibc.sh glibc-2.36.tar.xz 
@@ -35,7 +38,7 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/sed.sh sed-4.8.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/psmisc.sh psmisc-23.5.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/gettext.sh gettext-0.21.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/bison.sh bison-3.8.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/grep.sh grep-3.7.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/grep.sh grep-3.7.tar.xz 
 bash -e /dist/build_env/build_scripts/chroot-scripts/bash.sh bash-5.1.16.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/libtool.sh libtool-2.4.7.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/gdbm.sh gdbm-1.23.tar.gz
@@ -91,7 +94,7 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/fstab.sh
 
 bash -e /dist/build_env/build_scripts/chroot-scripts/linux-5.19.2.sh linux-5.19.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/sudo.sh sudo-1.9.11p3.tar.gz
-
+bash -e /dist/build_env/build_scripts/chroot-scripts/busybox.sh
 #bash -e /dist/build_env/build_scripts/chroot-scripts/grub-legacy-conf # WARNING! This command installs FemboyOS to your HOST machine in Legacy mode
 # If you do not want to install FemboyOS to your host, do not uncomment the line above. 
 
@@ -103,5 +106,8 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/which.sh which-2.21.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/squashfs-tools.sh
 bash -e /dist/build_env/build_scripts/chroot-scripts/cdrtools.sh cdrtools-3.01.tar.bz2 
 bash -e /dist/build_env/build_scripts/chroot-scripts/lsb-release.sh
+bash -e /dist/build_env/build_scripts/chroot-scripts/cpio.sh cpio-2.13.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/mkinitramfs.sh
+
 
 bash -e /dist/build_env/build_scripts/chroot-scripts/neofetch.sh 

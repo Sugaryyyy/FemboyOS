@@ -7,8 +7,10 @@ make CCOM=gcc
 
 make install
 
-cp -rv bin/ include/ lib/ sbin/ share/ /usr/
+cd /opt/schily
 
-rm -rf /usr/opt
+cp -rv bin/ include/ lib/ /usr/
+
+rm -rf /opt/schily
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

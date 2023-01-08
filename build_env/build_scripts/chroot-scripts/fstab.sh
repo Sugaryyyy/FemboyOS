@@ -5,7 +5,6 @@ cat > /etc/fstab << "EOF"
 #                                                              order
 
 /dev/sda2     /            ext4   defaults            1     1
-/dev/sda3     swap         swap     pri=1               0     0
 
 # End /etc/fstab
 EOF
