@@ -1,5 +1,15 @@
-echo "Testing $LFS and $DIST_ROOT variables, if you don't have them set,"
-echo "LFS is: '(path to FemboyOS)/build_env/build_root' (eg. /basia/FemboyOS//build_env/build_root/), and $DIST_ROOT is (path to FemboyOS) (eg. /basia/FemboyOS/)"
+echo "Testing \$LFS and \$DIST_ROOT variables, if you don't have them set,"
+echo "\n\$LFS is: '(path to FemboyOS)/build_env/build_root' (eg. /basia/FemboyOS/build_env/build_root/), and \$DIST_ROOT is (path to FemboyOS) (eg. /basia/FemboyOS/)"
+
+if [ -z ${LFS+x} ]; then
+echo "[*]\$LFS is not defined or NULL";
+exit -1
+fi
+if [ -z ${DIST_ROOT+x} ]; then
+echo "[*]\$DIST_ROOT is not defined or NULL";
+exit -1
+fi
+
 
 echo "Dist Root: ${DIST_ROOT:?}"
 echo "LFS: ${LFS:?}"
@@ -20,14 +30,32 @@ do
     fi
 
 done; 
-mkdir -pv $LFS/{bin,etc,lib,sbin,usr,var,lib64,tools}
+
+
+mkdir -pv $LFS/bin
+mkdir -pv $LFS/etc
+mkdir -pv $LFS/lib
+mkdir -pv $LFS/sbin
+mkdir -pv $LFS/usr
+mkdir -pv $LFS/var
+mkdir -pv $LFS/lib64
+mkdir -pv $LFS/tools
+
 
 if ! test $(id -u distbuild) ; then
 
-groupadd distbuild
-useradd -s /bin/bash -g distbuild -m -k /dev/null distbuild
-passwd distbuild
-chown -v distbuild $LFS/{usr,lib,var,etc,bin,sbin,tools,lib64,sources}
+sudo groupadd distbuild
+sudo useradd -s /bin/bash -g distbuild -m -k /dev/null distbuild
+sudo passwd distbuild
+sudo chown -v distbuild $LFS/usr
+sudo chown -v distbuild $LFS/lib
+sudo chown -v distbuild $LFS/var
+sudo chown -v distbuild $LFS/etc
+sudo chown -v distbuild $LFS/bin
+sudo chown -v distbuild $LFS/sbin
+sudo chown -v distbuild $LFS/tools
+sudo chown -v distbuild $LFS/lib64
+sudo chown -v distbuild $LFS/sources
 
 dbhome=$(eval echo "~distbuild")
 

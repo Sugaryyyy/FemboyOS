@@ -1,5 +1,14 @@
 set -e
 
+if [ -z ${LFS+x} ]; then
+echo "[*]\$LFS is not defined or NULL";
+exit -1
+fi
+if [ -z ${DIST_ROOT+x} ]; then
+echo "[*]\$DIST_ROOT is not defined or NULL";
+exit -1
+fi
+
 echo "Dist Root: ${DIST_ROOT:?}"
 echo "LFS: ${LFS:?}"
 
