@@ -1,5 +1,5 @@
 TO DO BEFORE FemboyOS RELEASE (not in order):
-- Fix Initramfs (done) and Systemd
+- -- Fix Initramfs and Systemd -- *Done!*
 - Add Graphics Drivers 
 - Add KDE 
 - Add Networking 
