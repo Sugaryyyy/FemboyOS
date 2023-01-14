@@ -1,5 +1,3 @@
-. /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
-    
 cat > /etc/inputrc << "EOF"
 # Begin /etc/inputrc
 # Modified by Chris Lynn <roryo@roryo.dynup.net>
@@ -43,5 +41,3 @@ set bell-style none
 
 # End /etc/inputrc
 EOF
-
-. /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

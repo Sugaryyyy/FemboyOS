@@ -6,8 +6,6 @@ echo
 echo
 echo
 
-ln -f /usr/bin/bash bash
-
 bash -e /dist/build_env/build_scripts/chroot-scripts/man-pages.sh man-pages-5.13.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/lana-etc.sh 
 bash -e /dist/build_env/build_scripts/chroot-scripts/glibc.sh glibc-2.36.tar.xz 
@@ -87,6 +85,7 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/util-linux.sh util-linux-2.
 bash -e /dist/build_env/build_scripts/chroot-scripts/e2fsprogs.sh e2fsprogs-1.46.5.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/strip.sh # Strips debugging symbols.
 bash -e /dist/build_env/build_scripts/chroot-scripts/cleanup.sh
+bash -e /dist/build_env/build_scripts/chroot-scripts/networksetup.sh
 bash -e /dist/build_env/build_scripts/chroot-scripts/inputrc.sh
 bash -e /dist/build_env/build_scripts/chroot-scripts/shells.sh
 bash -e /dist/build_env/build_scripts/chroot-scripts/systemdconf.sh

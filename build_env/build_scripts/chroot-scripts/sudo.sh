@@ -12,4 +12,6 @@ make
 make install &&
 ln -sfv libsudo_util.so.0.0.0 /usr/lib/sudo/libsudo_util.so.0
 
+chown root:root /usr/bin/sudo && chmod 4755 /usr/bin/sudo
+
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

@@ -32,15 +32,17 @@ do
 done; 
 
 
-mkdir -pv $LFS/bin
-mkdir -pv $LFS/etc
-mkdir -pv $LFS/lib
-mkdir -pv $LFS/sbin
-mkdir -pv $LFS/usr
-mkdir -pv $LFS/var
-mkdir -pv $LFS/lib64
-mkdir -pv $LFS/tools
+mkdir -pv $LFS/{etc,var} $LFS/usr/{bin,lib,sbin}
 
+for i in bin lib sbin; do
+  ln -sv usr/$i $LFS/$i
+done
+
+case $(uname -m) in
+  x86_64) mkdir -pv $LFS/lib64 ;;
+esac
+
+mkdir -pv $LFS/tools
 
 if ! test $(id -u distbuild) ; then
 
