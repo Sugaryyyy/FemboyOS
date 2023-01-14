@@ -1,8 +1,5 @@
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
 
-ln -f /usr/bin/rm /bin/rm
-ln -f /usr/bin/ln /bin/ln
-
 make CCOM=gcc
 
 make install

@@ -1,8 +1,8 @@
 echo "Installing squashfs-tools >W<"
 
-tar -xf 4.5.1.tar.gz
-
 cd /sources/
+
+tar -xf 4.5.1.tar.gz
 
 cd squashfs-tools-4.5.1
 

@@ -31,8 +31,13 @@ do
 
 done; 
 
+mkdir -pv $LFS/etc 
+mkdir -pv $LFS/var 
+mkdir -pv $LFS/usr/lib
+mkdir -pv $LFS/usr/sbin
+mkdir -pv $LFS/usr/bin
 
-mkdir -pv $LFS/{etc,var} $LFS/usr/{bin,lib,sbin}
+
 
 for i in bin lib sbin; do
   ln -sv usr/$i $LFS/$i

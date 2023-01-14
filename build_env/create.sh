@@ -43,8 +43,6 @@ bash -e build_scripts/xz.sh xz-5.2.6.tar.xz
 bash -e build_scripts/binutils-pass-2.sh binutils-2.39.tar.xz
 bash -e build_scripts/gcc-pass-2.sh gcc-12.2.0.tar.xz
 
-sudo cp build_root/usr/lib//ld-linux-x86-64.so.2 build_root/lib/
-sudo ln -f build_root/usr/bin/bash build_root/bin/sh
 sudo -E build_scripts/build-chroot.sh
 
 
