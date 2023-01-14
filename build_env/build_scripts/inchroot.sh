@@ -110,3 +110,5 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/mkinitramfs.sh
 
 
 bash -e /dist/build_env/build_scripts/chroot-scripts/neofetch.sh 
+echo "Done! :3"
+echo ""
