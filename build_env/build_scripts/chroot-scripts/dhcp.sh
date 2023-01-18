@@ -1,6 +1,6 @@
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
-    
-( export CFLAGS="${CFLAGS:--g -O2} -Wall -fno-strict-aliasing                 \
+ 
+        ( export CFLAGS="${CFLAGS:--g -O2} -Wall -fno-strict-aliasing                 \
         -D_PATH_DHCLIENT_SCRIPT='\"/usr/sbin/dhclient-script\"'     \
         -D_PATH_DHCPD_CONF='\"/etc/dhcp/dhcpd.conf\"'               \
         -D_PATH_DHCLIENT_CONF='\"/etc/dhcp/dhclient.conf\"'"        &&
@@ -41,22 +41,11 @@ EOF
 
 install -v -dm 755 /var/lib/dhclient
 
-make install-service-dhclient
+tar -xf /sources/blfs-systemd-units-20220720.tar.xz
+cd blfs-systemd-units-20220720
 
-cat > /etc/sysconfig/ifconfig.eth0 << "EOF"
-ONBOOT="yes"
-IFACE="eth0"
-SERVICE="dhclient"
-DHCP_START=""
-DHCP_STOP=""
+make install-dhclient
 
-# Set PRINTIP="yes" to have the script print
-# the DHCP assigned IP address
-PRINTIP="no"
-
-# Set PRINTALL="yes" to print the DHCP assigned values for
-# IP, SM, DG, and 1st NS. This requires PRINTIP="yes".
-PRINTALL="no"
-EOF
+systemctl enable dhclient@eth0
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

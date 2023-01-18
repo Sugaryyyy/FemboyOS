@@ -110,5 +110,50 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/mkinitramfs.sh
 
 
 bash -e /dist/build_env/build_scripts/chroot-scripts/neofetch.sh 
-echo "Done! :3"
-echo ""
+bash -e /dist/build_env/build_scripts/chroot-scripts/motd.sh 
+
+bash -e /dist/build_env/build_scripts/chroot-scripts/libarchive.sh libarchive-3.6.1.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/curl.sh curl-7.84.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libuv.sh libuv-v1.44.2.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/cmake.sh cmake-3.24.1.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/git.sh git-2.37.2.tar.xz
+
+
+echo "Setting up networking :3"
+
+bash -e /dist/build_env/build_scripts/chroot-scripts/dhcpcd.sh dhcpcd-9.4.1.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/dhcp.sh dhcp-4.4.3.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libnl.sh libnl-3.7.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/iw.sh iw-5.19.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/wget.sh wget-1.21.3.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libxml2.sh libxml2-2.10.3.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libxslt.sh libxslt-1.1.37.tar.xz  
+bash -e /dist/build_env/build_scripts/chroot-scripts/pcre.sh pcre-8.45.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/glib.sh glib-2.72.3.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libnl.sh glib-2.72.3.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/glib.sh glib-2.72.3.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/wpa_supplicant.sh wpa_supplicant-2.10.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/iptables.sh iptables-1.8.8.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/net-tools.sh net-tools-2.10.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libtasn1.sh libtasn1-4.18.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/p11-kit.sh p11-kit-0.24.1.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/nspr.sh nspr-4.34.1.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/nss.sh nss-3.82.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/make-ca.sh make-ca-1.10.tar.xz
+echo "Building shells :3"
+# Building optional shells, if you do not want shells, you can safely uncomment them.
+
+bash -e /dist/build_env/build_scripts/chroot-scripts/zsh.sh zsh-5.9.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/fish.sh fish-3.6.0.tar.xz
+
+echo "Building Links and image libraries :3"
+# Optional
+
+bash -e /dist/build_env/build_scripts/chroot-scripts/libpng.sh libpng-1.6.37.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libjpeg.sh libjpeg-turbo-2.1.4.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/yasm.sh yasm-1.3.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libevent.sh libevent-2.1.12-stable.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/brotli.sh brotli-1.0.9.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/links.sh links-2.27.tar.bz2
+
+bash -e /dist/build_env/build_scripts/chroot-scripts/uwufetch.sh
