@@ -44,6 +44,6 @@ make DESTDIR=$LFS install
 ln -sv gcc $LFS/usr/bin/cc
 
 cd $LFS/sources
-rm -rf gcc-12.2.0
+rm -rf gcc-12.2.0/
 
 . $DIST_ROOT/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

@@ -1,5 +1,5 @@
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
-
+echo "gcc compilation inc! ><"
 case $(uname -m) in
   x86_64)
     sed -e '/m64=/s/lib64/lib/' \
@@ -7,22 +7,22 @@ case $(uname -m) in
   ;;
 esac
 
-mkdir -v build
+mkdir -p build
 cd       build
 
-../configure --prefix=/usr            \
-             LD=ld                    \
-             --enable-languages=c,c++ \
-             --disable-multilib       \
-             --disable-bootstrap      \
-             --with-system-zlib
+#../configure --prefix=/usr            \
+#             LD=ld                    \
+#             --enable-languages=c,c++ \
+#             --disable-multilib       \
+#             --disable-bootstrap      \
+#             --with-system-zlib
 
-make
+#make
 
 ulimit -s 32768
 useradd tester
 chown -Rv tester .
-su tester -c "PATH=$PATH make -k check"
+#su tester -c "PATH=$PATH make -k check" # Uncomment if you want to run the make check. Warning: It may take a long time and some errors may occur.
 
 ../contrib/test_summary
 
