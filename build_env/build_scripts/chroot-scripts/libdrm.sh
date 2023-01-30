@@ -1,13 +1,14 @@
 cd /sources/
-wget -nc https://github.com/harfbuzz/harfbuzz/releases/download/5.1.0/harfbuzz-5.1.0.tar.xz
+wget -nc https://dri.freedesktop.org/libdrm/libdrm-2.4.112.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 mkdir -p build &&
 cd    build &&
 
-meson --prefix=/usr        \
-      --buildtype=release  \
-      -Dgraphite2=enabled  &&
+meson --prefix=$XORG_PREFIX \
+      --buildtype=release   \
+      -Dudev=true           \
+      -Dvalgrind=false      &&
 ninja
 
 ninja install

@@ -1,13 +1,11 @@
 cd /sources/
-wget -nc https://github.com/harfbuzz/harfbuzz/releases/download/5.1.0/harfbuzz-5.1.0.tar.xz
+wget -nc https://wayland.freedesktop.org/releases/wayland-protocols-1.26.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 mkdir -p build &&
 cd    build &&
 
-meson --prefix=/usr        \
-      --buildtype=release  \
-      -Dgraphite2=enabled  &&
+meson --prefix=/usr --buildtype=release &&
 ninja
 
 ninja install

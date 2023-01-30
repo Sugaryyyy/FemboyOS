@@ -169,7 +169,7 @@ wget -q --spider http://google.com
 if [ $? -eq 0 ]; then
     echo "Online"
 else
-    echo "Offline"
+    echo "Offline, you need a internet connection to install a DE."
     echo "Bailing out, you're on your own. Good luck :3"
     exit -1
 fi
@@ -210,6 +210,7 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/icu.sh icu4c-71_1-src.tgz
 bash -e /dist/build_env/build_scripts/chroot-scripts/Graphite2.sh graphite2-1.3.14.tgz
 bash -e /dist/build_env/build_scripts/chroot-scripts/HarfBuzz.sh harfbuzz-5.1.0.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/FreeType.sh freetype-2.12.1.tar.xz # Freetype 2nd pass
+bash -e /dist/build_env/build_scripts/chroot-scripts/HarfBuzz.sh harfbuzz-5.1.0.tar.xz # Harfbuzz 2nd pass
 bash -e /dist/build_env/build_scripts/chroot-scripts/fontconfig.sh fontconfig-2.14.0.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/xorglibs.sh
 bash -e /dist/build_env/build_scripts/chroot-scripts/lcms.sh lcms2-2.13.1.tar.gz
@@ -250,8 +251,43 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/libtiff.sh tiff-4.4.0.tar.g
 bash -e /dist/build_env/build_scripts/chroot-scripts/openjpeg.sh openjpeg-2.5.0.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/ghostscript.sh ghostscript-9.56.1.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/boost.sh boost_1_80_0.tar.bz2
-
-
-
+bash -e /dist/build_env/build_scripts/chroot-scripts/pixman.sh pixman-0.40.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/cairo.sh cairo-1.17.6.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/poppler.sh poppler-22.08.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/qpdf.sh qpdf-10.6.3.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/dejavu-font.sh dejavu-fonts-ttf-2.37.tar.bz2 
+bash -e /dist/build_env/build_scripts/chroot-scripts/libexif.sh libexif-0.6.24.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/mako.sh Mako-1.2.1.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libdrm.sh libdrm-2.4.112.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libva.sh libva-2.15.0.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/libvdpau.sh libvdpau-1.5.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/wayland.sh wayland-1.21.0.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/wayland-protocols.sh wayland-protocols-1.26.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/mesa.sh mesa-22.1.7.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/glu.sh glu-9.0.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/mupdf.sh mupdf-1.20.3-source.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/cups-filters.sh cups-filters-1.28.16.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/gstreamer.sh gstreamer-1.20.3.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/cdparanoia.sh cdparanoia-III-10.2.tgz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libogg.sh libogg-1.3.5.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libvorbis.sh libvorbis-1.3.7.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libtheora.sh libtheora-1.1.1.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/fribidi.sh fribidi-1.0.12.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/pango.sh pango-1.50.9.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/gst-plugins-base.sh gst-plugins-base-1.20.3.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/jasper.sh jasper-version-3.0.6.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libmng.sh libmng-2.0.3.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/sdl.sh SDL-1.2.15.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libwebp.sh libwebp-1.2.4.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/xkeyboard-config.sh xkeyboard-config-2.36.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libxkbcommon.sh libxkbcommon-1.4.1.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/mtdev.sh mtdev-1.1.6.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/pcre2.sh pcre2-10.40.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/xcb-util.sh xcb-util-0.4.0.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/xcb-util-image.sh xcb-util-image-0.4.0.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/xcb-util-keysyms.sh xcb-util-keysyms-0.4.0.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/xcb-util-renderutil.sh xcb-util-renderutil-0.3.9.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/xcb-util-wm.sh xcb-util-wm-0.4.1.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/qt.sh qt-everywhere-src-5.15.5.tar.xz
+
 bash -e /dist/build_env/build_scripts/chroot-scripts/phonon.sh phonon-4.11.1.tar.xz
