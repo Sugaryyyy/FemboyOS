@@ -72,14 +72,14 @@ ldconfig
 cat > /etc/profile.d/rustc.sh << "EOF"
 # Begin /etc/profile.d/rustc.sh
 
-PATH=$PATH:/opt/rustc/bin
+pathprepend /opt/rustc/bin           PATH
 
 # Include /opt/rustc/man in the MANPATH variable to access manual pages
-MANPATH=$MANPATH:/opt/rustc/share/man
+pathappend  /opt/rustc/share/man     MANPATH
 
 # End /etc/profile.d/rustc.sh
 EOF
 
-source /etc/profile.d/rustc.sh
+export PATH=$PATH:/opt/rustc/bin/
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

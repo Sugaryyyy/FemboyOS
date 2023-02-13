@@ -197,6 +197,7 @@ Defaults env_keep += XORG_PREFIX
 Defaults env_keep += XORG_CONFIG
 EOF
 
+echo "export PATH=/usr/bin:/usr/sbin:/bin:/sbin:/opt/rustc/bin:/opt/qt-5.15.5/:/opt/kf5" >> /etc/environment
 
 bash -e /dist/build_env/build_scripts/chroot-scripts/extra-cmake-modules.sh extra-cmake-modules-5.97.0.tar.
 bash -e /dist/build_env/build_scripts/chroot-scripts/xcb-proto.sh xcb-proto-1.15.2.tar.xz
@@ -289,5 +290,179 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/xcb-util-keysyms.sh xcb-uti
 bash -e /dist/build_env/build_scripts/chroot-scripts/xcb-util-renderutil.sh xcb-util-renderutil-0.3.9.tar.bz2
 bash -e /dist/build_env/build_scripts/chroot-scripts/xcb-util-wm.sh xcb-util-wm-0.4.1.tar.bz2
 bash -e /dist/build_env/build_scripts/chroot-scripts/qt.sh qt-everywhere-src-5.15.5.tar.xz
-
 bash -e /dist/build_env/build_scripts/chroot-scripts/phonon.sh phonon-4.11.1.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/flac.sh flac-1.3.4.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/shared-mime-info.sh shared-mime-info-2.2.tar.gz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/gdk-pixbuf.sh gdk-pixbuf-2.42.9.tar.xz https://download.gnome.org/sources/gdk-pixbuf/2.42/gdk-pixbuf-2.42.9.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/lame.sh lame-3.100.tar.gz https://downloads.sourceforge.net/lame/lame-3.100.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libvpx.sh libvpx-1.12.0.tar.gz https://github.com/webmproject/libvpx/archive/v1.12.0/libvpx-1.12.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/mpg123.sh mpg123-1.30.2.tar.bz2 https://downloads.sourceforge.net/mpg123/mpg123-1.30.2.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/opus.sh opus-1.3.1.tar.gz https://archive.mozilla.org/pub/opus/opus-1.3.1.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libsndfile.sh libsndfile-1.1.0.tar.xz https://github.com/libsndfile/libsndfile/releases/download/1.1.0/libsndfile-1.1.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libcap-PAM.sh libcap-2.65.tar.xz https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/libcap-2.65.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/soundtouch.sh soundtouch-2.3.1.tar.gz https://www.surina.net/soundtouch/soundtouch-2.3.1.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/gst-plugins-bad.sh gst-plugins-bad-1.20.3.tar.xz https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-1.20.3.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/liba52.sh a52dec-0.7.4.tar.gz http://liba52.sourceforge.net/files/a52dec-0.7.4.tar.gz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/nasm.sh nasm-2.15.05.tar.xz https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/nasm-2.15.05.tar.xz https://www.nasm.us/pub/nasm/releasebuilds/2.15.05/nasm-2.15.05-xdoc.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/x264.sh x264-20220819.tar.xz https://anduin.linuxfromscratch.org/BLFS/x264/x264-20220819.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/gst-plugins-ugly.sh gst-plugins-ugly-1.20.3.tar.xz https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-1.20.3.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/phonon-backend-gstreamer.sh phonon-backend-gstreamer-4.10.0.tar.xz  https://download.kde.org/stable/phonon/phonon-backend-gstreamer/4.10.0/phonon-backend-gstreamer-4.10.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/polkit-qt.sh polkit-qt-1-0.114.0.tar.xz https://download.kde.org/stable/polkit-qt-1/polkit-qt-1-0.114.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libdbusmenu-qt.sh libdbusmenu-qt-0.9.3+16.04.20160218.tar.gz https://launchpad.net/ubuntu/+archive/primary/+files/libdbusmenu-qt_0.9.3+16.04.20160218.orig.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/plasma-wayland-protocols.sh plasma-wayland-protocols-1.7.0.tar.xz https://download.kde.org/stable/plasma-wayland-protocols/plasma-wayland-protocols-1.7.0.tar.xz
+
+export KF5_PREFIX=/opt/kf5
+
+cat > /etc/profile.d/kf5.sh << "EOF"
+# Begin /etc/profile.d/kf5.sh
+
+export KF5_PREFIX=/opt/kf5
+
+pathappend $KF5_PREFIX/bin              PATH
+pathappend $KF5_PREFIX/lib/pkgconfig    PKG_CONFIG_PATH
+
+pathappend $KF5_PREFIX/etc/xdg          XDG_CONFIG_DIRS
+pathappend $KF5_PREFIX/share            XDG_DATA_DIRS
+
+pathappend $KF5_PREFIX/lib/plugins      QT_PLUGIN_PATH
+pathappend $KF5_PREFIX/lib/plugins/kcms QT_PLUGIN_PATH
+
+pathappend $KF5_PREFIX/lib/qml          QML2_IMPORT_PATH
+
+pathappend $KF5_PREFIX/lib/python3.10/site-packages PYTHONPATH
+
+pathappend $KF5_PREFIX/share/man        MANPATH
+# End /etc/profile.d/kf5.sh
+EOF
+
+cat >> /etc/profile.d/qt5.sh << "EOF"
+# Begin Qt5 changes for KF5
+
+pathappend /usr/lib/plugins            QT_PLUGIN_PATH
+pathappend $QT5DIR/plugins             QT_PLUGIN_PATH
+pathappend $QT5DIR/qml                 QML2_IMPORT_PATH
+
+# End Qt5 changes for KF5
+EOF
+
+cat >> /etc/ld.so.conf << "EOF"
+# Begin KF5 addition
+
+/opt/kf5/lib
+
+# End KF5 addition
+EOF
+
+install -v -dm755           $KF5_PREFIX/{etc,share} &&
+ln -sfv /etc/dbus-1         $KF5_PREFIX/etc         &&
+ln -sfv /usr/share/dbus-1   $KF5_PREFIX/share       &&
+ln -sfv /usr/share/polkit-1 $KF5_PREFIX/share       &&
+install -v -dm755           $KF5_PREFIX/lib         &&
+ln -sfv /usr/lib/systemd    $KF5_PREFIX/lib
+
+install -v -dm755                $KF5_PREFIX/share/icons &&
+ln -sfv /usr/share/icons/hicolor $KF5_PREFIX/share/icons
+
+mv /opt/kf5{,-5.97.0}
+ln -sfv kf5-5.97.0 /opt/kf5
+
+
+bash -e /dist/build_env/build_scripts/chroot-scripts/giflib.sh giflib-5.2.1.tar.gz https://sourceforge.net/projects/giflib/files/giflib-5.2.1.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libepoxy.sh libepoxy-1.5.10.tar.xz https://download.gnome.org/sources/libepoxy/1.5/libepoxy-1.5.10.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/libgpgerror.sh libgpg-error-1.45.tar.bz2 https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.45.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/libgcrypt.sh libgcrypt-1.10.1.tar.bz2 https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.10.1.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/libical.sh libical-3.0.14.tar.gz https://github.com/libical/libical/releases/download/v3.0.14/libical-3.0.14.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/lmdb.sh lmdb-LMDB_0.9.29.tar.gz https://github.com/LMDB/lmdb/archive/LMDB_0.9.29.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/qca.sh qca-2.3.4.tar.xz https://download.kde.org/stable/qca/2.3.4/qca-2.3.4.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/qrencode.sh qrencode-4.1.1.tar.bz2 https://fukuchi.org/works/qrencode/qrencode-4.1.1.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/uri.sh URI-5.12.tar.gz https://www.cpan.org/authors/id/O/OA/OALDERS/URI-5.12.tar.gz https://cpan.metacpan.org/authors/id/H/HA/HAARG/Test-Needs-0.002009.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/aspell.sh aspell-0.60.8.tar.gz https://ftp.gnu.org/gnu/aspell/aspell-0.60.8.tar.gz https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/networkmanager.sh NetworkManager-1.38.4.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libspiro.sh libspiro-20220722.tar.gz https://github.com/fontforge/libspiro/releases/download/20220722/libspiro-dist-20220722.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/fontforge.sh fontforge-20220308.tar.xz https://github.com/fontforge/fontforge/releases/download/20220308/fontforge-20220308.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kde-fonts.sh
+bash -e /dist/build_env/build_scripts/chroot-scripts/kf5.sh 
+bash -e /dist/build_env/build_scripts/chroot-scripts/unrar.sh unrar.tar.gz https://www.rarlab.com/rar/unrarsrc-6.1.7.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/zip.sh zip30.tar.gz https://downloads.sourceforge.net./infozip/zip30.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ark.sh ark-22.08.0.tar.xz https://download.kde.org/stable/release-service/22.08.0/src/ark-22.08.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/gavl.sh gavl-1.4.0.tar.gz https://downloads.sourceforge.net/gmerlin/gavl-1.4.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/frei0r-plugins.sh frei0r-plugins-1.8.0.tar.gz https://files.dyne.org/frei0r/releases/frei0r-plugins-1.8.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/mlt.sh mlt-7.8.0.tar.gz https://github.com/mltframework/mlt/releases/download/v7.8.0/mlt-7.8.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/v4l-utils.sh v4l-utils-1.22.1.tar.bz2 https://www.linuxtv.org/downloads/v4l-utils/v4l-utils-1.22.1.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/breeze-icons.sh breeze-icons-5.97.0.tar.xz https://download.kde.org/stable/frameworks/5.97/breeze-icons-5.97.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdenlive.sh kdenlive-22.08.0.tar.xz https://download.kde.org/stable/release-service/22.08.0/src/kdenlive-22.08.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kmix.sh kmix-22.08.0.tar.xz https://download.kde.org/stable/release-service/22.08.0/src/kmix-22.08.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kio-extras.sh kio-extras-22.08.0.tar.xz https://download.kde.org/stable/release-service/22.08.0/src/kio-extras-22.08.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/grantlee.sh grantlee-5.2.0.tar.gz https://github.com/steveire/grantlee/releases/download/v5.2.0/grantlee-5.2.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/xapian.sh xapian-core-1.4.20.tar.xz https://oligarchy.co.uk/xapian/1.4.20/xapian-core-1.4.20.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/khelpcenter.sh khelpcenter-22.08.0.tar.xz https://download.kde.org/stable/release-service/22.08.0/src/khelpcenter-22.08.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/konsole.sh konsole-22.08.0.tar.xz https://download.kde.org/stable/release-service/22.08.0/src/konsole-22.08.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/exiv2.sh exiv2-0.27.5-Source.tar.gz  https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-Source.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libkexiv2.sh libkexiv2-22.08.0.tar.xz https://download.kde.org/stable/release-service/22.08.0/src/libkexiv2-22.08.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/poppler.sh poppler-22.08.0.tar.xz # rebuilding for KDE support
+bash -e /dist/build_env/build_scripts/chroot-scripts/okular.sh okular-22.08.0.tar.xz https://download.kde.org/stable/release-service/22.08.0/src/okular-22.08.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libraw.sh LibRaw-0.20.2.tar.gz https://www.libraw.org/data/LibRaw-0.20.2.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libkdcraw.sh libkdcraw-22.08.0.tar.xz https://download.kde.org/stable/release-service/22.08.0/src/libkdcraw-22.08.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kcolorpicker.sh kColorPicker-0.2.0.tar.gz https://github.com/ksnip/kColorPicker/archive/refs/tags/v0.2.0/kColorPicker-0.2.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kimageannotator.sh kImageAnnotator-0.6.0.tar.gz https://github.com/ksnip/kImageAnnotator/archive/refs/tags/v0.6.0/kImageAnnotator-0.6.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/gwenview.sh gwenview-22.08.0.tar.xz  https://download.kde.org/stable/release-service/22.08.0/src/gwenview-22.08.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/neon.sh neon-0.32.2.tar.gz https://notroj.github.io/neon/neon-0.32.2.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libmusicbrainz.sh libmusicbrainz-5.1.0.tar.gz https://github.com/metabrainz/libmusicbrainz/releases/download/release-5.1.0/libmusicbrainz-5.1.0.tar.gz https://www.linuxfromscratch.org/patches/blfs/11.2/libmusicbrainz-5.1.0-cmake_fixes-1.patch
+bash -e /dist/build_env/build_scripts/chroot-scripts/libkcddb.sh libkcddb-22.08.0.tar.xz https://download.kde.org/stable/release-service/22.08.0/src/libkcddb-22.08.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libsamplerate.sh libsamplerate-0.2.2.tar.xz https://github.com/libsndfile/libsamplerate/releases/download/0.2.2/libsamplerate-0.2.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libatasmart.sh libatasmart-0.19.tar.xz http://0pointer.de/public/libatasmart-0.19.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libbytesize.sh libbytesize-2.7.tar.gz  https://github.com/storaged-project/libbytesize/releases/download/2.7/libbytesize-2.7.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libyaml.sh yaml-0.2.5.tar.gz https://github.com/yaml/libyaml/releases/download/0.2.5/yaml-0.2.5.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libaio.sh libaio-0.3.113.tar.gz https://pagure.io/libaio/archive/libaio-0.3.113/libaio-0.3.113.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/lvm2.sh LVM2.2.03.16.tgz https://sourceware.org/ftp/lvm2/LVM2.2.03.16.tgz
+bash -e /dist/build_env/build_scripts/chroot-scripts/parted.sh parted-3.5.tar.xz https://ftp.gnu.org/gnu/parted/parted-3.5.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/json-c.sh json-c-0.16.tar.gz https://s3.amazonaws.com/json-c_releases/releases/json-c-0.16.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/popt.sh popt-1.18.tar.gz http://ftp.rpm.org/popt/releases/popt-1.x/popt-1.18.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/cryptsetup.sh cryptsetup-2.4.3.tar.xz https://www.kernel.org/pub/linux/utils/cryptsetup/v2.4/cryptsetup-2.4.3.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libassuan.sh libassuan-2.5.5.tar.bz2 https://www.gnupg.org/ftp/gcrypt/libassuan/libassuan-2.5.5.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/gpgme.sh gpgme-1.18.0.tar.bz2 https://www.gnupg.org/ftp/gcrypt/gpgme/gpgme-1.18.0.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/swig.sh swig-4.0.2.tar.gz https://downloads.sourceforge.net/swig/swig-4.0.2.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/autopoint.sh
+bash -e /dist/build_env/build_scripts/chroot-scripts/volume-key.sh volume_key-0.3.12.tar.gz https://github.com/felixonmars/volume_key/archive/volume_key-0.3.12.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libblockdev.sh libblockdev-2.27.tar.gz https://github.com/storaged-project/libblockdev/releases/download/2.27-1/libblockdev-2.27.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/lzo.sh lzo-2.10.tar.gz https://www.oberhumer.com/opensource/lzo/download/lzo-2.10.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/asciidoc.sh asciidoc-10.2.0.tar.gz https://files.pythonhosted.org/packages/source/a/asciidoc/asciidoc-10.2.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/btrfs-progs.sh btrfs-progs-v5.19.tar.xz https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v5.19.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/dosfstools.sh dosfstools-4.2.tar.gz https://github.com/dosfstools/dosfstools/releases/download/v4.2/dosfstools-4.2.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/gptfdisk.sh gptfdisk-1.0.9.tar.gz https://downloads.sourceforge.net/gptfdisk/gptfdisk-1.0.9.tar.gz https://www.linuxfromscratch.org/patches/blfs/11.2/gptfdisk-1.0.9-convenience-1.patch
+bash -e /dist/build_env/build_scripts/chroot-scripts/mdadm.sh mdadm-4.2.tar.xz  https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-4.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/inih.sh inih-r56.tar.gz https://github.com/benhoyt/inih/archive/r56/inih-r56.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/liburcu.sh userspace-rcu-0.13.2.tar.bz2 https://lttng.org/files/urcu/userspace-rcu-0.13.2.tar.bz2 
+bash -e /dist/build_env/build_scripts/chroot-scripts/xfsprogs.sh xfsprogs-5.19.0.tar.xz https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-5.19.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/udisks.sh udisks-2.9.4.tar.bz2 https://github.com/storaged-project/udisks/releases/download/udisks-2.9.4/udisks-2.9.4.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/libburn.sh libburn-1.5.4.tar.gz https://files.libburnia-project.org/releases/libburn-1.5.4.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libdvdread.sh libdvdread-6.1.3.tar.bz2 https://get.videolan.org/libdvdread/6.1.3/libdvdread-6.1.3.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/taglib.sh taglib-1.12.tar.gz https://taglib.org/releases/taglib-1.12.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/dvdrw-tools.sh dvd+rw-tools-7.1.tar.gz http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-7.1.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libao.sh libao-1.2.0.tar.gz https://downloads.xiph.org/releases/ao/libao-1.2.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libmad.sh libmad-0.15.1b.tar.gz https://downloads.sourceforge.net/mad/libmad-0.15.1b.tar.gz  https://www.linuxfromscratch.org/patches/blfs/11.2/libmad-0.15.1b-fixes-1.patch
+bash -e /dist/build_env/build_scripts/chroot-scripts/cdrdao.sh cdrdao-1.2.4.tar.bz2 https://downloads.sourceforge.net/cdrdao/cdrdao-1.2.4.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/k3b.sh k3b-22.08.0.tar.xz https://download.kde.org/stable/release-service/22.08.0/src/k3b-22.08.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/
+bash -e /dist/build_env/build_scripts/chroot-scripts/

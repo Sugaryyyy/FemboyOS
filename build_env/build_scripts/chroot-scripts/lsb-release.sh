@@ -10,7 +10,7 @@ EOF
 cat > /etc/os-release << "EOF"
 NAME="FemboyOS"
 VERSION="11.2-systemd"
-ID=lfs
+ID=femboyos
 PRETTY_NAME="FemboyOS 23.01 Prerelease 4"
 VERSION_CODENAME="Sugaryy_"
 EOF

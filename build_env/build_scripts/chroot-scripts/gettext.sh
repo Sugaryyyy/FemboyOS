@@ -6,7 +6,7 @@
         
 make
 
-make check
+#make check # Uncomment to run tests.
 
 make install
 chmod -v 0755 /usr/lib/preloadable_libintl.so

@@ -1,4 +1,5 @@
-   git clone https://github.com/TheDarkBug/uwufetch.git
+cd /sources/
+git clone https://github.com/TheDarkBug/uwufetch.git
 cd uwufetch
-make build # add "CFLAGS+=-D__IPHONE__" if you are building for iOS
+make build 
 sudo make install

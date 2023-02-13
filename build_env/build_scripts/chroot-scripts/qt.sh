@@ -104,18 +104,27 @@ for file in moc uic rcc qmake lconvert lrelease lupdate; do
   ln -sfrvn $QT5BINDIR/$file /usr/bin/$file-qt5
 done
 
+cat >> /etc/ld.so.conf << EOF
+# Begin Qt addition
+
+/opt/qt5/lib
+
+# End Qt addition
+EOF
+
+ldconfig
+
 cat > /etc/profile.d/qt5.sh << "EOF"
 # Begin /etc/profile.d/qt5.sh
 
-QT5DIR=/usr
+QT5DIR=/opt/qt5
+
+PATH=$PATH:$QT5DIR/bin
+PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$QT5DIR/lib/pkgconfig
+
 export QT5DIR
-pathappend $QT5DIR/bin
 
 # End /etc/profile.d/qt5.sh
-EOF
-
-cat > /etc/sudoers.d/qt << "EOF"
-Defaults env_keep += QT5DIR
 EOF
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

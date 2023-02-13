@@ -25,4 +25,6 @@ install -v -m755 Linux*/bin/{certutil,nss-config,pk12util} /usr/bin &&
 
 install -v -m644 Linux*/lib/pkgconfig/nss.pc  /usr/lib/pkgconfig
 
+ln -sfv ./pkcs11/p11-kit-trust.so /usr/lib/libnssckbi.so
+
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 
