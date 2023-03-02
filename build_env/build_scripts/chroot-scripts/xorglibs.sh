@@ -73,5 +73,3 @@ do
   rm -rf $packagedir
   /sbin/ldconfig
 done
-
-exit

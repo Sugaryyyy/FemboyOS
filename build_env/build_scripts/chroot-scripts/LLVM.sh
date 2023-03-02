@@ -1,6 +1,6 @@
 cd /sources/
-wget https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-14.0.6.src.tar.xz
-wget https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/clang-14.0.6.src.tar.xz
+wget -nc https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-14.0.6.src.tar.xz
+wget -nc https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/clang-14.0.6.src.tar.xz
 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
@@ -9,7 +9,7 @@ mv tools/clang-14.0.6.src tools/clang
 
 grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'
 
-mkdir -v build &&
+mkdir -p build &&
 cd       build &&
 
 echo "LLVM compilation starting, ETA to finishing: 22 years."
@@ -23,6 +23,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr               \
       -DLLVM_TARGETS_TO_BUILD="host;AMDGPU;BPF" \
       -DLLVM_BINUTILS_INCDIR=/usr/include       \
       -DLLVM_INCLUDE_BENCHMARKS=OFF             \
+      -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" \
       -Wno-dev -G Ninja ..                      &&
 ninja
 

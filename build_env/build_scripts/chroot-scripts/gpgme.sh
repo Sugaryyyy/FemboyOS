@@ -6,6 +6,8 @@ sed -e 's/3\.9/3.10/'                    \
     -e 's/:3/:4/'                        \
     -i configure
 
+export PKG_CONFIG_PATH=/opt/qt5/lib/pkgconfig/
+
 ./configure --prefix=/usr --disable-gpg-test &&
 make
 
