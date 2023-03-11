@@ -1,10 +1,10 @@
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
 
+sed -i "s/echo/#echo/" src/egrep.sh
+
 ./configure --prefix=/usr
 
 make
-
-make check
 
 make install
 

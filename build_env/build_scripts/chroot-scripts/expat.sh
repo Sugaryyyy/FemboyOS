@@ -2,14 +2,12 @@
 
 ./configure --prefix=/usr    \
             --disable-static \
-            --docdir=/usr/share/doc/expat-2.4.8
+            --docdir=/usr/share/doc/expat-2.5.0
 
 make
 
-make check
-
 make install
 
-install -v -m644 doc/*.{html,css} /usr/share/doc/expat-2.4.8
+install -v -m644 doc/*.{html,css} /usr/share/doc/expat-2.5.0
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

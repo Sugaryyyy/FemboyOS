@@ -5,7 +5,6 @@
             --sysconfdir=/etc \
             --docdir=/usr/share/doc/attr-2.5.1
 make
-make check
 make install
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

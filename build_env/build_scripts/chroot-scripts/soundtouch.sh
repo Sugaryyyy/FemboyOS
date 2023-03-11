@@ -4,7 +4,7 @@ wget -nc $2
 
 ./bootstrap &&
 ./configure --prefix=/usr \
-            --docdir=/usr/share/doc/soundtouch-2.3.1 &&
+            --docdir=/usr/share/doc/soundtouch-2.3.2 &&
 make
 
 make install

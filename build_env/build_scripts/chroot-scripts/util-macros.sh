@@ -1,5 +1,5 @@
 cd /sources/
-wget https://www.x.org/pub/individual/util/util-macros-1.19.3.tar.bz2
+wget -nc https://www.x.org/pub/individual/util/util-macros-1.20.0.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 ./configure $XORG_CONFIG

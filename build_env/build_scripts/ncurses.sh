@@ -23,8 +23,12 @@ popd
             --enable-widec
 
 make
+
 make DESTDIR=$LFS TIC_PATH=$(pwd)/build/progs/tic install
 echo "INPUT(-lncursesw)" > $LFS/usr/lib/libncurses.so
+
+cd ..
+rm -rf $1
 
 . $DIST_ROOT/build_env/build_scripts/inc-end.sh $1 $(basename $0)
 

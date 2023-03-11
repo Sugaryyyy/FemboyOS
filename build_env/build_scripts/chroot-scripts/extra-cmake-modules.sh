@@ -1,5 +1,5 @@
 cd /sources/
-wget https://download.kde.org/stable/frameworks/5.97/extra-cmake-modules-5.97.0.tar.xz
+wget -nc https://download.kde.org/stable/frameworks/5.103/extra-cmake-modules-5.103.0.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 sed -i '/"lib64"/s/64//' kde-modules/KDEInstallDirsCommon.cmake &&

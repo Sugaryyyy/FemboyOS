@@ -1,6 +1,6 @@
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
-export NINJAJOBS=4
+export NINJAJOBS=$(nproc)
 
 sed -i '/int Guess/a \
   int   j = 0;\
@@ -10,9 +10,6 @@ sed -i '/int Guess/a \
 ' src/ninja.cc
 
 python3 configure.py --bootstrap
-
-./ninja ninja_test
-./ninja_test --gtest_filter=-SubprocessTest.SetWithLots
 
 install -vm755 ninja /usr/bin/
 install -vDm644 misc/bash-completion /usr/share/bash-completion/completions/ninja

@@ -1,1 +1,0 @@
-cp services protocols /etc

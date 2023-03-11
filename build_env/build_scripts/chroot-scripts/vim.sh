@@ -10,10 +10,10 @@ make install
 
 ln -sv vim /usr/bin/vi
 for L in  /usr/share/man/{,*/}man1/vim.1; do
-    ln -sv vim.1 $(dirname $L)/vi.1
+    ln -svf vim.1 $(dirname $L)/vi.1
 done
 
-ln -sv ../vim/vim90/doc /usr/share/doc/vim-9.0.0228
+ln -svf ../vim/vim90/doc /usr/share/doc/vim-9.0.1273
 
 cat > /etc/vimrc << "EOF"
 " Begin /etc/vimrc

@@ -21,7 +21,7 @@ make tooldir=/usr
 
 make tooldir=/usr install
 
-rm -fv /usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.a
-
+rm -fv /usr/lib/lib{bfd,ctf,ctf-nobfd,sframe,opcodes}.a
+rm -fv /usr/share/man/man1/{gprofng,gp-*}.1
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

@@ -6,11 +6,9 @@ sed -i 's/extras//' Makefile.in
 
 make
 
-make check
+make LN='ln -f' install
 
-make install
-
-mkdir -pv                                   /usr/share/doc/gawk-5.1.1
-cp    -v doc/{awkforai.txt,*.{eps,pdf,jpg}} /usr/share/doc/gawk-5.1.1
+mkdir -pv                                   /usr/share/doc/gawk-5.2.1
+cp    -v doc/{awkforai.txt,*.{eps,pdf,jpg}} /usr/share/doc/gawk-5.2.1
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

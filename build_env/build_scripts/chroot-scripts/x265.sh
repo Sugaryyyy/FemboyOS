@@ -6,7 +6,8 @@ mkdir bld &&
 cd    bld &&
 
 cmake -DCMAKE_INSTALL_PREFIX=/usr \
-      -DGIT_ARCHETYPE=1 ../source &&
+      -DGIT_ARCHETYPE=1           \
+      -Wno-dev ../source          &&
 make -j$(nproc)
 
 make install &&

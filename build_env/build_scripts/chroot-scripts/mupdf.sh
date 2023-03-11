@@ -1,5 +1,5 @@
 cd /sources/
-wget -nc https://www.mupdf.com/downloads/archive/mupdf-1.20.3-source.tar.gz
+wget -nc https://www.mupdf.com/downloads/archive/mupdf-1.21.1-source.tar.gz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 sed -i '/MU.*_EXE. :/{
@@ -29,7 +29,7 @@ unset XCFLAGS
 
 make prefix=/usr                        \
      shared=yes                         \
-     docdir=/usr/share/doc/mupdf-1.20.3 \
+     docdir=/usr/share/doc/mupdf-1.21.1 \
      install                            &&
 
 chmod 755 /usr/lib/libmupdf.so          &&

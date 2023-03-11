@@ -1,5 +1,5 @@
 cd /sources/
-wget -nc http://downloads.webmproject.org/releases/webp/libwebp-1.2.4.tar.gz
+wget -nc http://downloads.webmproject.org/releases/webp/libwebp-1.3.0.tar.gz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 ./configure --prefix=/usr           \

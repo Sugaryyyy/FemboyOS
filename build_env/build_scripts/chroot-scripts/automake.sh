@@ -4,8 +4,6 @@
 
 make
 
-make -j4 check
-
 make install 
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

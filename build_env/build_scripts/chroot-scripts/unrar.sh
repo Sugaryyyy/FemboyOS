@@ -5,6 +5,6 @@ mv unrarsrc* unrar.tar.gz
 
 make -f makefile 
 
-install -v -m775 unrar /usr/bin
+install -v -m755 unrar /usr/bin
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

@@ -21,4 +21,6 @@ make DESTDIR=$LFS install
 
 rm -v $LFS/usr/lib/lib{bfd,ctf,ctf-nobfd,opcodes}.{a,la}
 
+cd ..
+rm -rf $1
 . $DIST_ROOT/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

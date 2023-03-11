@@ -1,15 +1,17 @@
 cd /sources/
-wget -nc https://download.qt.io/archive/qt/5.15/5.15.5/single/qt-everywhere-opensource-src-5.15.5.tar.xz
-wget -nc https://www.linuxfromscratch.org/patches/blfs/11.2/qt-everywhere-opensource-src-5.15.5-kf5-1.patch
-cp qt-everywhere-opensource-src-5.15.5.tar.xz qt-everywhere-src-5.15.5.tar.xz
+wget -nc https://download.qt.io/archive/qt/5.15/5.15.8/single/qt-everywhere-opensource-src-5.15.8.tar.xz
+wget -nc https://www.linuxfromscratch.org/patches/blfs/11.3/qt-everywhere-opensource-src-5.15.8-kf5-1.patch
+cp qt-everywhere-opensource-src-5.15.8.tar.xz qt-everywhere-src-5.15.8.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 export QT5PREFIX=/opt/qt5
 
-mkdir -pv /opt/qt-5.15.5
-ln -sfnv qt-5.15.5 /opt/qt5
+mkdir -pv /opt/qt-5.15.8
+ln -sfnv qt-5.15.8 /opt/qt5
 
-patch -Np1 -i ../qt-everywhere-opensource-src-5.15.5-kf5-1.patch
+patch -Np1 -i ../qt-everywhere-opensource-src-5.15.8-kf5-1.patch
+
+mkdir -pv qtbase/.git
 
 ./configure -prefix $QT5PREFIX                        \
             -sysconfdir /etc/xdg                      \
@@ -30,7 +32,7 @@ make install
 find $QT5PREFIX/ -name \*.prl \
    -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
 
-   QT5BINDIR=$QT5PREFIX/bin
+QT5BINDIR=$QT5PREFIX/bin
 
 install -v -dm755 /usr/share/pixmaps/                  &&
 
@@ -104,6 +106,10 @@ for file in moc uic rcc qmake lconvert lrelease lupdate; do
   ln -sfrvn $QT5BINDIR/$file /usr/bin/$file-qt5
 done
 
+cat > /etc/sudoers.d/qt << "EOF"
+Defaults env_keep += QT5DIR
+EOF
+
 cat >> /etc/ld.so.conf << EOF
 # Begin Qt addition
 
@@ -119,8 +125,8 @@ cat > /etc/profile.d/qt5.sh << "EOF"
 
 QT5DIR=/opt/qt5
 
-PATH=$PATH:$QT5DIR/bin
-PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$QT5DIR/lib/pkgconfig
+pathappend $QT5DIR/bin           PATH
+pathappend $QT5DIR/lib/pkgconfig PKG_CONFIG_PATH
 
 export QT5DIR
 

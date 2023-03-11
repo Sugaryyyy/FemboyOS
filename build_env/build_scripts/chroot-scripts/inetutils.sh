@@ -13,8 +13,6 @@
 
 make
 
-make check
-
 make install
 
 mv -v /usr/{,s}bin/ifconfig

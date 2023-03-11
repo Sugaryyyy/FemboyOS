@@ -1,10 +1,10 @@
 cd /sources/
-wget -nc https://poppler.freedesktop.org/poppler-22.08.0.tar.xz
-wget -nc https://poppler.freedesktop.org/poppler-data-0.4.11.tar.gz
+wget -nc https://poppler.freedesktop.org/poppler-23.02.0.tar.xz
+wget -nc https://poppler.freedesktop.org/poppler-data-0.4.12.tar.gz
 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
-mkdir -p build                         &&
+mkdir -p build                      &&
 cd    build                         &&
 
 cmake  -DCMAKE_BUILD_TYPE=Release   \
@@ -12,15 +12,14 @@ cmake  -DCMAKE_BUILD_TYPE=Release   \
        -DTESTDATADIR=$PWD/testfiles \
        -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
        ..                           &&
-make
-
+make -j$(nproc)
 make install 
 
-install -v -m755 -d           /usr/share/doc/poppler-22.08.0 &&
-cp -vr ../glib/reference/html /usr/share/doc/poppler-22.08.0
+install -v -m755 -d           /usr/share/doc/poppler-23.02.0 &&
+cp -vr ../glib/reference/html /usr/share/doc/poppler-23.02.0
 
-tar -xf ../../poppler-data-0.4.11.tar.gz &&
-cd poppler-data-0.4.11
+tar -xf ../../poppler-data-0.4.12.tar.gz &&
+cd poppler-data-0.4.12
 
 make prefix=/usr install
 

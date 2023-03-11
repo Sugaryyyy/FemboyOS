@@ -6,6 +6,7 @@ find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \;
 find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \;
 
 sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD SHA512:' \
+    -e 's@#\(SHA_CRYPT_..._ROUNDS 5000\)@\100@'       \
     -e 's:/var/spool/mail:/var/mail:'                 \
     -e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                \
     -i etc/login.defs

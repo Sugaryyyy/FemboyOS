@@ -7,8 +7,8 @@ cd    build &&
 
 meson  --prefix=/usr       \
        --buildtype=release \
-       -Dpackage-origin=https://www.linuxfromscratch.org/blfs/view/11.2-systemd/ \
-       -Dpackage-name="GStreamer 1.20.3 BLFS" &&
+       -Dpackage-origin=https://www.linuxfromscratch.org/blfs/view/11.3-systemd/ \
+       -Dpackage-name="GStreamer 1.22.0 BLFS" &&
 ninja
 
 ninja install

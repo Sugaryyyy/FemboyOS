@@ -1,5 +1,6 @@
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
-echo "gcc compilation inc! ><"
+echo "gcc compilation inc! >~<"
+
 case $(uname -m) in
   x86_64)
     sed -e '/m64=/s/lib64/lib/' \
@@ -7,24 +8,26 @@ case $(uname -m) in
   ;;
 esac
 
-mkdir -p build
+mkdir -v build
 cd       build
 
-#../configure --prefix=/usr            \
-#             LD=ld                    \
-#             --enable-languages=c,c++ \
-#             --disable-multilib       \
-#             --disable-bootstrap      \
-#             --with-system-zlib
+../configure --prefix=/usr            \
+             LD=ld                    \
+             --enable-languages=c,c++ \
+             --enable-default-pie     \
+             --enable-default-ssp     \
+             --disable-multilib       \
+             --disable-bootstrap      \
+             --with-system-zlib
 
-#make
+make
 
 ulimit -s 32768
 useradd tester
 chown -Rv tester .
 #su tester -c "PATH=$PATH make -k check" # Uncomment if you want to run the make check. Warning: It may take a long time and some errors may occur.
 
-../contrib/test_summary
+#../contrib/test_summary
 
 make install
 
@@ -51,4 +54,8 @@ grep "/lib.*/libc.so.6 " dummy.log
 grep found dummy.log
 
 rm -v dummy.c a.out dummy.log
+
+mkdir -pv /usr/share/gdb/auto-load/usr/lib
+mv -v /usr/lib/*gdb.py /usr/share/gdb/auto-load/usr/lib
+
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

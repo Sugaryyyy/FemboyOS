@@ -1,9 +1,9 @@
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
-./configure --prefix=/usr                            \
-            --docdir=/usr/share/doc/procps-ng-4.0.0 \
-            --disable-static                         \
-            --disable-kill                           \
+./configure --prefix=/usr                           \
+            --docdir=/usr/share/doc/procps-ng-4.0.2 \
+            --disable-static                        \
+            --disable-kill                          \
             --with-systemd
 
 make

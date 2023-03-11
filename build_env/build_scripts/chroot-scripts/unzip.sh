@@ -1,6 +1,6 @@
 cd /sources/
 wget -nc https://downloads.sourceforge.net/infozip/unzip60.tar.gz
-wget -nc https://www.linuxfromscratch.org/patches/blfs/11.2/unzip-6.0-consolidated_fixes-1.patch
+wget -nc  https://www.linuxfromscratch.org/patches/blfs/11.3/unzip-6.0-consolidated_fixes-1.patch
 wget -nc https://j3e.de/linux/convmv/convmv-2.05.tar.gz
 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

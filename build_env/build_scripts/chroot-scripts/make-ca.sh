@@ -17,4 +17,15 @@ openssl x509 -in class3.crt -text -fingerprint -setalias "CAcert Class 3 root" \
         > /etc/ssl/local/CAcert_Class_3_root.pem &&
 /usr/sbin/make-ca -r
 
+export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt
+
+mkdir -pv /etc/profile.d &&
+cat > /etc/profile.d/pythoncerts.sh << "EOF"
+# Begin /etc/profile.d/pythoncerts.sh
+
+export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt
+
+# End /etc/profile.d/pythoncerts.sh
+EOF
+
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

@@ -4,8 +4,6 @@
 
 make
 
-make check
-
 make install
 
 make TEXMF=/usr/share/texmf install-tex

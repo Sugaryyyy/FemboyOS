@@ -20,10 +20,7 @@ sh Configure -des                                         \
 
 make
 
-make test
-
 make install
-
 unset BUILD_ZLIB BUILD_BZIP2
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

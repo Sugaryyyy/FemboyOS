@@ -1,6 +1,6 @@
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
-    
-patch -Np1 -i ../systemd-251-glibc_2.36_fix-1.patch
+pip3 install jinja2
+patch -Np1 -i ../systemd-252-security_fix-1.patch
 
 sed -i -e 's/GROUP="render"/GROUP="video"/' \
        -e 's/GROUP="sgx", //' rules.d/50-udev-default.rules.in
@@ -21,19 +21,19 @@ meson --prefix=/usr                 \
       -Dman=false                   \
       -Dmode=release                \
       -Dpamconfdir=no               \
-      -Ddocdir=/usr/share/doc/systemd-251 \
+      -Ddocdir=/usr/share/doc/systemd-252 \
       ..
 
 ninja
 
 ninja install
 
-tar -xf ../../systemd-man-pages-251.tar.xz --strip-components=1 -C /usr/share/man
+tar -xf ../../systemd-man-pages-252-2.tar.xz --strip-components=1 -C /usr/share/man
 
 systemd-machine-id-setup
 
 systemctl preset-all
 
-systemctl disable systemd-sysupdate
+systemctl disable systemd-sysupdate{,-reboot}
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

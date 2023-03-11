@@ -3,7 +3,10 @@ set -x
 
 echo "GLIBC COMPILE INCOMING >w< >w< >w<"
 
-patch -Np1 -i ../glibc-2.36-fhs-1.patch
+patch -Np1 -i ../glibc-2.37-fhs-1.patch
+
+sed '/width -=/s/workend - string/number_length/' \
+    -i stdio-common/vfprintf-process-arg.c
 
 mkdir -v build
 cd       build
@@ -18,7 +21,6 @@ echo "rootsbindir=/usr/sbin" > configparms
              libc_cv_slibdir=/usr/lib
 
 make
-
 
 touch /etc/ld.so.conf
 
@@ -96,7 +98,7 @@ rpc: files
 # End /etc/nsswitch.conf
 EOF
 
-tar -xf ../../tzdata2022c.tar.gz
+tar -xf ../../tzdata2022g.tar.gz
 
 ZONEINFO=/usr/share/zoneinfo
 mkdir -pv $ZONEINFO/{posix,right}

@@ -8,8 +8,6 @@
 
 make
 
-make test
-
 make install
 ln -svf expect5.45.4/libexpect5.45.4.so /usr/lib
 

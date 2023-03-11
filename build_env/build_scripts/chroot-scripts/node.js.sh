@@ -12,6 +12,6 @@ wget -nc $2
 make -j$(nproc)
 
 make install &&
-ln -sf node /usr/share/doc/node-16.17.0
+ln -sf node /usr/share/doc/node-18.14.1
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

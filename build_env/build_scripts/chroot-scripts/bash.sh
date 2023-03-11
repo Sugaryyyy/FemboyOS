@@ -1,10 +1,9 @@
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
 
-./configure --prefix=/usr                      \
-            --docdir=/usr/share/doc/bash-5.1.16 \
-            --without-bash-malloc              \
-            --with-installed-readline
-
+./configure --prefix=/usr             \
+            --without-bash-malloc     \
+            --with-installed-readline \
+            --docdir=/usr/share/doc/bash-5.2.15
 make
 
 chown -Rv tester .

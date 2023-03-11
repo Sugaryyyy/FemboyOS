@@ -7,7 +7,7 @@ make NETNS_RUN_DIR=/run/netns
 
 make SBINDIR=/usr/sbin install
 
-mkdir -pv             /usr/share/doc/iproute2-5.19.0
-cp -v COPYING README* /usr/share/doc/iproute2-5.19.0
+mkdir -pv             /usr/share/doc/iproute2-6.1.0
+cp -v COPYING README* /usr/share/doc/iproute2-6.1.0
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

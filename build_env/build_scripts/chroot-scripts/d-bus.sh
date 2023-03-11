@@ -7,7 +7,7 @@
             --disable-static                     \
             --disable-doxygen-docs               \
             --disable-xml-docs                   \
-            --docdir=/usr/share/doc/dbus-1.14.0 \
+            --docdir=/usr/share/doc/dbus-1.14.6  \
             --with-system-socket=/run/dbus/system_bus_socket
 
 make

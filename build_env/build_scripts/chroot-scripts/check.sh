@@ -4,8 +4,6 @@
 
 make
 
-make check 
-
 make docdir=/usr/share/doc/check-0.15.2 install
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

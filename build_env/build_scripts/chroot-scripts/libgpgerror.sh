@@ -6,6 +6,6 @@ wget -nc $2
 make
 
 make install &&
-install -v -m644 -D README /usr/share/doc/libgpg-error-1.45/README
+install -v -m644 -D README /usr/share/doc/libgpg-error-1.46/README
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

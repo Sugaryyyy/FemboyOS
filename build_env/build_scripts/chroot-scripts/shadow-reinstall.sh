@@ -1,5 +1,4 @@
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
-
 sed -i 's@DICTPATH.*@DICTPATH\t/lib/cracklib/pw_dict@' etc/login.defs
 
 sed -i 's/groups$(EXEEXT) //' src/Makefile.in          &&
@@ -9,22 +8,20 @@ find man -name Makefile.in -exec sed -i 's/getspnam\.3 / /' {} \; &&
 find man -name Makefile.in -exec sed -i 's/passwd\.5 / /'   {} \; &&
 
 sed -e 's@#ENCRYPT_METHOD DES@ENCRYPT_METHOD SHA512@' \
+    -e 's@#\(SHA_CRYPT_..._ROUNDS 5000\)@\100@'       \
     -e 's@/var/spool/mail@/var/mail@'                 \
     -e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                \
     -i etc/login.defs                                 &&
 
 ./configure --sysconfdir=/etc               \
             --disable-static                \
+            --with-libcrack                 \
             --with-group-name-max-length=32 &&
 make
 
 make exec_prefix=/usr install
 
 make -C man install-man
-
-cd ..
-
-wget http://www.deer-run.com/~hal/linux_passwords_pam.html
 
 install -v -m644 /etc/login.defs /etc/login.defs.orig &&
 for FUNCTION in FAIL_DELAY               \
@@ -168,8 +165,8 @@ do
     sed -i "s/chage/$PROGRAM/" /etc/pam.d/${PROGRAM}
 done
 
-[ -f /etc/login.access ] && mv -v /etc/login.access{,.NOUSE}
+if [ -f /etc/login.access ]; then mv -v /etc/login.access{,.NOUSE}; fi
 
-[ -f /etc/limits ] && mv -v /etc/limits{,.NOUSE}
+if [ -f /etc/limits ]; then mv -v /etc/limits{,.NOUSE}; fi
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

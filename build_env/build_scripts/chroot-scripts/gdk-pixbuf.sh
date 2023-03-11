@@ -5,7 +5,7 @@ wget -nc $2
 mkdir build &&
 cd    build &&
 
-meson --prefix=/usr --buildtype=release --wrap-mode=nofallback -Dman=false .. &&
+meson --prefix=/usr --buildtype=release --wrap-mode=nofallback .. &&
 ninja
 
 ninja install

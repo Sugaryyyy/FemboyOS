@@ -18,12 +18,13 @@ for LIB in $save_usrlib; do
 done
 
 online_usrbin="bash find strip"
-online_usrlib="libbfd-2.39.so
-               libhistory.so.8.1
-               libncursesw.so.6.3
+online_usrlib="libbfd-2.40.so
+               libsframe.so.0.0.0
+               libhistory.so.8.2
+               libncursesw.so.6.4
                libm.so.6
-               libreadline.so.8.1
-               libz.so.1.2.12
+               libreadline.so.8.2
+               libz.so.1.2.13
                $(cd /usr/lib; find libnss*.so* -type f)"
 
 for BIN in $online_usrbin; do

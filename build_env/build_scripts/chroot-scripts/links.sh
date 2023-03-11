@@ -4,8 +4,8 @@
 make
 
 make install &&
-install -v -d -m755 /usr/share/doc/links-2.27 &&
+install -v -d -m755 /usr/share/doc/links-2.28 &&
 install -v -m644 doc/links_cal/* KEYS BRAILLE_HOWTO \
-    /usr/share/doc/links-2.27
+    /usr/share/doc/links-2.28
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

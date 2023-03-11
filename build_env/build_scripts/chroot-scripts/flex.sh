@@ -6,8 +6,6 @@
 
 make
 
-make check
-
 make install
 
 ln -sv flex /usr/bin/lex

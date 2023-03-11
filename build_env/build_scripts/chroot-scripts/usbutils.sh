@@ -1,8 +1,8 @@
 cd /sources/
-wget -nc https://www.kernel.org/pub/linux/utils/usb/usbutils/usbutils-014.tar.xz
-
+wget -nc  https://github.com/gregkh/usbutils/archive/v015/usbutils-015.tar.gz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
-    
+
+autoreconf -fiv &&
 ./configure --prefix=/usr --datadir=/usr/share/hwdata &&
 make
 

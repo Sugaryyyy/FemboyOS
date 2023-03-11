@@ -1,13 +1,12 @@
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
 
-make CCOM=gcc
+export GMAKE_NOWARN=true &&
+make -j1 INS_BASE=/usr DEFINSUSR=root DEFINSGRP=root
 
-make install
-
-cd /opt/schily
-
-cp -rv bin/ include/ lib/ /usr/
-
-rm -rf /opt/schily
+export GMAKE_NOWARN=true &&
+make INS_BASE=/usr MANSUFF_LIB=3cdr DEFINSUSR=root DEFINSGRP=root install &&
+install -v -m755 -d /usr/share/doc/cdrtools-3.02a09 &&
+install -v -m644 README.* READMEs/* ABOUT doc/*.ps \
+                    /usr/share/doc/cdrtools-3.02a09
 
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

@@ -1,6 +1,6 @@
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
-patch -Np1 -i ../nss-3.82-standalone-1.patch &&
+patch -Np1 -i ../nss-3.88.1-standalone-1.patch &&
 
 cd nss &&
 

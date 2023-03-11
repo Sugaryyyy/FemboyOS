@@ -10,7 +10,7 @@ cd    libvpx-build            &&
 ../configure --prefix=/usr    \
              --enable-shared  \
              --disable-static &&
-make
+make -j$(nproc)
 
 make install
 
