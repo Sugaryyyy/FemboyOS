@@ -1,7 +1,7 @@
 cd /sources/
-
+pip3 install doxypypy doxyqml pyyaml requests
 url=https://download.kde.org/stable/frameworks/5.103/
-wget -r -nH -nd -A '*.xz' -np $url
+wget -r -nH -nd -A '*.xz' -np -nc $url
 cat > frameworks-5.103.0.md5 << "EOF"
 0a7b74df0877363cd2316c906e0694d5  attica-5.103.0.tar.xz
 #ac7d7a883f8ecd2dab262a284981ad64  extra-cmake-modules-5.103.0.tar.xz

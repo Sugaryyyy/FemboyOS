@@ -1,11 +1,13 @@
 cd /sources/
-wget -nc https://download.gnome.org/sources/gobject-introspection/1.74/gobject-introspection-1.74.0.tar.xz
+wget -nc $2
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
-    
-mkdir -p build &&
+
+mkdir build &&
 cd    build &&
 
-meson --prefix=/usr --buildtype=release .. &&
+meson --prefix=$XORG_PREFIX    \
+      --buildtype=release      \
+      -Ddocumentation=disabled &&
 ninja
 
 ninja install

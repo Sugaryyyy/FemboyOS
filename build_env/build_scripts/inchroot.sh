@@ -100,7 +100,7 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/busybox.sh
 bash -e /dist/build_env/build_scripts/chroot-scripts/grub-efi.sh # Comment this if you're building for a Legacy system.
 #bash -e /dist/build_env/build_scripts/chroot-scripts/grub-efi-config.sh # WARNING! This command installs FemboyOS to your HOST machine in UEFI mode!
 # If you do not want to install FemboyOS to your host, do not uncomment the line above. 
-
+bash -e /dist/build_env/build_scripts/chroot-scripts/postlfscfg.sh
 bash -e /dist/build_env/build_scripts/chroot-scripts/which.sh which-2.21.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/squashfs-tools.sh
 bash -e /dist/build_env/build_scripts/chroot-scripts/cdrtools.sh cdrtools-3.02a09.tar.bz2
@@ -196,7 +196,15 @@ Defaults env_keep += XORG_PREFIX
 Defaults env_keep += XORG_CONFIG
 EOF
 
-echo "export PATH=/usr/bin:/usr/sbin:/bin:/sbin:/opt/rustc/bin:/opt/qt5/:/opt/kf5/bin/" >> /etc/environment
+echo "
+PATH="/usr/bin:/usr/sbin:/bin:/sbin:/opt/rustc/bin:/opt/qt5/bin/:/opt/kf5/bin/"
+LD_LIBRARY_PATH="/usr/lib/:/usr/local/lib:/opt/rustc/lib:/opt/qt5/lib:/opt/kf5/lib"
+export QT5_DIR="/opt/qt5"
+export XORG_PREFIX="/usr"
+export XORG_CONFIG=\"--prefix=$XORG_PREFIX --sysconfdir=/etc --localstatedir=/var --disable-static\"
+export QT5_PREFIX="/opt/qt5"
+export KF5_PREFIX="/opt/kf5"
+" >> /etc/environment
 
 bash -e /dist/build_env/build_scripts/chroot-scripts/extra-cmake-modules.sh extra-cmake-modules-5.103.0.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/xcb-proto.sh xcb-proto-1.15.2.tar.xz
@@ -369,9 +377,9 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/giflib.sh giflib-5.2.1.tar.
 bash -e /dist/build_env/build_scripts/chroot-scripts/libepoxy.sh libepoxy-1.5.10.tar.xz https://download.gnome.org/sources/libepoxy/1.5/libepoxy-1.5.10.tar.xz 
 bash -e /dist/build_env/build_scripts/chroot-scripts/libgpgerror.sh libgpg-error-1.46.tar.bz2 https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-1.46.tar.bz2
 bash -e /dist/build_env/build_scripts/chroot-scripts/libgcrypt.sh libgcrypt-1.10.1.tar.bz2 https://www.gnupg.org/ftp/gcrypt/libgcrypt/libgcrypt-1.10.1.tar.bz2
-bash -e /dist/build_env/build_scripts/chroot-scripts/libical.sh libical-3.0.16.tar.gz https://github.com/libical/libical/releases/download/v3.0.14/libical-3.0.16.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libical.sh libical-3.0.16.tar.gz https://github.com/libical/libical/releases/download/v3.0.16/libical-3.0.16.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/lmdb.sh lmdb-LMDB_0.9.29.tar.gz https://github.com/LMDB/lmdb/archive/LMDB_0.9.29.tar.gz
-bash -e /dist/build_env/build_scripts/chroot-scripts/qca.sh qca-2.3.5.tar.xz https://download.kde.org/stable/qca/2.3.4/qca-2.3.5.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/qca.sh qca-2.3.5.tar.xz https://download.kde.org/stable/qca/2.3.5/qca-2.3.5.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/qrencode.sh qrencode-4.1.1.tar.bz2 https://fukuchi.org/works/qrencode/qrencode-4.1.1.tar.bz2
 bash -e /dist/build_env/build_scripts/chroot-scripts/uri.sh URI-5.12.tar.gz https://www.cpan.org/authors/id/O/OA/OALDERS/URI-5.12.tar.gz https://cpan.metacpan.org/authors/id/H/HA/HAARG/Test-Needs-0.002009.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/aspell.sh aspell-0.60.8.tar.gz https://ftp.gnu.org/gnu/aspell/aspell-0.60.8.tar.gz https://ftp.gnu.org/gnu/aspell/dict/en/aspell6-en-2020.12.07-0.tar.bz2
@@ -385,19 +393,19 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/zip.sh zip30.tar.gz https:/
 bash -e /dist/build_env/build_scripts/chroot-scripts/ark.sh ark-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ark-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/gavl.sh gavl-1.4.0.tar.gz https://downloads.sourceforge.net/gmerlin/gavl-1.4.0.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/frei0r-plugins.sh frei0r-plugins-1.8.0.tar.gz https://files.dyne.org/frei0r/releases/frei0r-plugins-1.8.0.tar.gz
-bash -e /dist/build_env/build_scripts/chroot-scripts/mlt.sh mlt-7.12.0.tar.gz https://github.com/mltframework/mlt/releases/download/v7.8.0/mlt-7.12.0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/mlt.sh mlt-7.12.0.tar.gz https://github.com/mltframework/mlt/releases/download/v7.12.0/mlt-7.12.0.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/v4l-utils.sh v4l-utils-1.22.1.tar.bz2 https://www.linuxtv.org/downloads/v4l-utils/v4l-utils-1.22.1.tar.bz2
 bash -e /dist/build_env/build_scripts/chroot-scripts/breeze-icons.sh breeze-icons-5.103.0.tar.xz https://download.kde.org/stable/frameworks/5.97/breeze-icons-5.103.0.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/kdenlive.sh kdenlive-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdenlive-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/kmix.sh kmix-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kmix-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/kio-extras.sh kio-extras-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kio-extras-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/grantlee.sh grantlee-5.3.1.tar.gz https://github.com/steveire/grantlee/releases/download/v5.2.0/grantlee-5.3.1.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/grantlee.sh grantlee-5.3.1.tar.gz https://github.com/steveire/grantlee/releases/download/v5.3.1/grantlee-5.3.1.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/xapian.sh xapian-core-1.4.20.tar.xz https://oligarchy.co.uk/xapian/1.4.20/xapian-core-1.4.20.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/khelpcenter.sh khelpcenter-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/khelpcenter-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/konsole.sh konsole-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/konsole-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/exiv2.sh exiv2-0.27.5-Source.tar.gz  https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-Source.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/libkexiv2.sh libkexiv2-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/libkexiv2-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/poppler.sh poppler-22.12.2.tar.xz # rebuilding for KDE support
+bash -e /dist/build_env/build_scripts/chroot-scripts/poppler.sh poppler-23.02.0.tar.xz # rebuilding for KDE support
 bash -e /dist/build_env/build_scripts/chroot-scripts/okular.sh okular-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/okular-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/libraw.sh LibRaw-0.20.2.tar.gz https://www.libraw.org/data/LibRaw-0.20.2.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/libkdcraw.sh libkdcraw-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/libkdcraw-22.12.2.tar.xz
@@ -444,37 +452,37 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/libao.sh libao-1.2.0.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/libmad.sh libmad-0.15.1b.tar.gz https://downloads.sourceforge.net/mad/libmad-0.15.1b.tar.gz  https://www.linuxfromscratch.org/patches/blfs/11.2/libmad-0.15.1b-fixes-1.patch
 bash -e /dist/build_env/build_scripts/chroot-scripts/cdrdao.sh cdrdao-1.2.4.tar.bz2 https://downloads.sourceforge.net/cdrdao/cdrdao-1.2.4.tar.bz2
 bash -e /dist/build_env/build_scripts/chroot-scripts/k3b.sh k3b-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/k3b-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/juk.sh juk-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/juk-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/dragon.sh dragon-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/dragon-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kcalc.sh kcalc-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kcalc-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kwalletmanager.sh kwalletmanager-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kwalletmanager-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/marble.sh marble-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/marble-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi.sh akonadi-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/akonadi-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kmime.sh kmime-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kmime-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kakonadi-mime.sh akonadi-mime-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/akonadi-mime-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/juk.sh juk-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/juk-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/dragon.sh dragon-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/dragon-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kcalc.sh kcalc-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kcalc-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kwalletmanager.sh kwalletmanager-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kwalletmanager-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/marble.sh marble-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/marble-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi.sh akonadi-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/akonadi-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kmime.sh kmime-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kmime-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kakonadi-mime.sh akonadi-mime-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/akonadi-mime-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/cyprus-sasl.sh cyrus-sasl-2.1.28.tar.gz https://github.com/cyrusimap/cyrus-sasl/releases/download/cyrus-sasl-2.1.28/cyrus-sasl-2.1.28.tar.gz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ksmtp.sh ksmtp-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/ksmtp-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/libkgapi.sh libkgapi-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/libkgapi-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ksmtp.sh ksmtp-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ksmtp-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libkgapi.sh libkgapi-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/libkgapi-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/libsecret.sh libsecret-0.20.5.tar.xz https://download.gnome.org/sources/libsecret/0.20/libsecret-0.20.5.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/qtkeychain.sh qtkeychain-0.13.2.tar.gz https://github.com/frankosterfeld/qtkeychain/archive/refs/tags/v0.13.2.tar.gz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/kmailtransport.sh kmailtransport-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kmailtransport-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kpimtextedit.sh kpimtextedit-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kpimtextedit-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/identitymanagment.sh kidentitymanagement-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kidentitymanagement-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kcalutils.sh kcalutils-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kcalutils-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/grantlee-theme.sh grantleetheme-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/grantleetheme-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi-contacts.sh akonadi-contacts-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/akonadi-contacts-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi-calendar.sh akonadi-calendar-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/akonadi-calendar-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi-notes.sh akonadi-notes-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/akonadi-notes-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/calendarsupport.sh calendarsupport-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/calendarsupport-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi-calendar-tools.sh akonadi-calendar-tools-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/akonadi-calendar-tools-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/imap.sh kimap-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kimap-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ldap.sh kldap-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kldap-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi-search.sh akonadi-search-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/akonadi-search-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/pimcommon.sh pimcommon-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/pimcommon-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/mailimporter.sh mailimporter-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/mailimporter-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kmbox.sh kmbox-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kmbox-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/libgravatar.sh libgravatar-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/libgravatar-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/libkleo.sh libkleo-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/libkleo-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kmailtransport.sh kmailtransport-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kmailtransport-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kpimtextedit.sh kpimtextedit-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kpimtextedit-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/identitymanagment.sh kidentitymanagement-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kidentitymanagement-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kcalutils.sh kcalutils-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kcalutils-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/grantlee-theme.sh grantleetheme-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/grantleetheme-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi-contacts.sh akonadi-contacts-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/akonadi-contacts-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi-calendar.sh akonadi-calendar-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/akonadi-calendar-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi-notes.sh akonadi-notes-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/akonadi-notes-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/calendarsupport.sh calendarsupport-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/calendarsupport-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi-calendar-tools.sh akonadi-calendar-tools-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/akonadi-calendar-tools-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/imap.sh kimap-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kimap-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ldap.sh kldap-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kldap-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi-search.sh akonadi-search-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/akonadi-search-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/pimcommon.sh pimcommon-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/pimcommon-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/mailimporter.sh mailimporter-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/mailimporter-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kmbox.sh kmbox-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kmbox-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libgravatar.sh libgravatar-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/libgravatar-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libkleo.sh libkleo-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/libkleo-22.12.2.tar.xz
 pip3 install qt5-tools
 bash -e /dist/build_env/build_scripts/chroot-scripts/python2.sh Python-2.7.18.tar.xz https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz https://www.linuxfromscratch.org/patches/blfs/11.2/Python-2.7.18-security_fixes-1.patch
 bash -e /dist/build_env/build_scripts/chroot-scripts/c-ares.sh c-ares-1.19.0.tar.gz https://c-ares.haxx.se/download/c-ares-1.19.0.tar.gz
@@ -487,179 +495,222 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/x265.sh x265-20230215.tar.x
 bash -e /dist/build_env/build_scripts/chroot-scripts/sdl2.sh SDL2-2.26.3.tar.gz https://www.libsdl.org/release/SDL2-2.26.3.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/ffmpeg.sh ffmpeg-5.1.2.tar.xz https://ffmpeg.org/releases/ffmpeg-5.1.2.tar.xz https://www.linuxfromscratch.org/patches/blfs/11.3/ffmpeg-5.1.2-chromium_method-1.patch
 bash -e /dist/build_env/build_scripts/chroot-scripts/qtwebengine.sh qtwebengine-5.15.12.tar.xz https://anduin.linuxfromscratch.org/BLFS/qtwebengine/qtwebengine-5.15.12.tar.xz  https://www.linuxfromscratch.org/patches/blfs/11.3/qtwebengine-5.15.12-build_fixes-1.patch https://www.linuxfromscratch.org/patches/blfs/11.3/qtwebengine-5.15.12-ffmpeg5_fixes-1.patch
-bash -e /dist/build_env/build_scripts/chroot-scripts/messagelib.sh messagelib-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/messagelib-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/mailcommon.sh mailcommon-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/mailcommon-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi-import-wizard.sh akonadi-import-wizard-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/akonadi-import-wizard-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/akonadiconsole.sh akonadiconsole-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/akonadiconsole-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kontaktinterface.sh kontactinterface-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kontactinterface-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kontact.sh kontact-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kontact-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/akregator.sh akregator-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/akregator-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/artikulate.sh artikulate-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/artikulate-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/libkcompactdisk.sh libkcompactdisc-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/libkcompactdisc-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/audiocd-kio.sh audiocd-kio-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/audiocd-kio-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/blinken.sh blinken-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/blinken-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/messagelib.sh messagelib-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/messagelib-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/mailcommon.sh mailcommon-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/mailcommon-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/akonadi-import-wizard.sh akonadi-import-wizard-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/akonadi-import-wizard-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/akonadiconsole.sh akonadiconsole-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/akonadiconsole-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kontaktinterface.sh kontactinterface-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kontactinterface-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kontact.sh kontact-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kontact-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/akregator.sh akregator-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/akregator-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/artikulate.sh artikulate-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/artikulate-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libkcompactdisk.sh libkcompactdisc-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/libkcompactdisc-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/audiocd-kio.sh audiocd-kio-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/audiocd-kio-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/blinken.sh blinken-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/blinken-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/openal-soft.sh openal-soft-1.23.0.tar.bz2 https://openal-soft.org/openal-releases/openal-soft-1.23.0.tar.bz2
-bash -e /dist/build_env/build_scripts/chroot-scripts/libkdegames.sh libkdegames-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/libkdegames-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/bomber.sh bomber-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/bomber-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/bovo.sh bovo-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/bovo-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/cantor.sh cantor-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/cantor-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/cervisia.sh cervisia-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/cervisia-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libkdegames.sh libkdegames-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/libkdegames-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/bomber.sh bomber-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/bomber-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/bovo.sh bovo-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/bovo-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/cantor.sh cantor-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/cantor-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/cervisia.sh cervisia-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/cervisia-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/colord.sh colord-1.4.6.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/dolphin.sh dolphin-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/dolphin-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/dolphin-plugins.sh dolphin-plugins-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/dolphin-plugins-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/elisa.sh elisa-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/elisa-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/falkon.sh falkon-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/falkon-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ffmpegthumbs.sh ffmpegthumbs-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/ffmpegthumbs-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/filelight.sh filelight-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/filelight-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/granatier.sh granatier-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/granatier-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/grantlee-editor.sh grantlee-editor-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/grantlee-editor-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kpkpass.sh kpkpass-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kpkpass-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kitinerary.sh kitinerary-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kitinerary-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/publictransport.sh kpublictransport-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kpublictransport-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kosmindoormap.sh kosmindoormap-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kosmindoormap-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/itinerary.sh itinerary-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/itinerary-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kaddressbook.sh kaddressbook-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kaddressbook-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/libkmahjongg.sh libkmahjongg-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/libkmahjongg-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kajongg.sh kajongg-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kajongg-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kalarm.sh kalarm-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kalarm-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/dolphin.sh dolphin-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/dolphin-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/dolphin-plugins.sh dolphin-plugins-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/dolphin-plugins-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/elisa.sh elisa-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/elisa-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/falkon.sh falkon-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/falkon-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ffmpegthumbs.sh ffmpegthumbs-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ffmpegthumbs-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/filelight.sh filelight-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/filelight-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/granatier.sh granatier-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/granatier-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/grantlee-editor.sh grantlee-editor-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/grantlee-editor-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kpkpass.sh kpkpass-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kpkpass-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kitinerary.sh kitinerary-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kitinerary-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/publictransport.sh kpublictransport-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kpublictransport-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kosmindoormap.sh kosmindoormap-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kosmindoormap-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/itinerary.sh itinerary-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/itinerary-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kaddressbook.sh kaddressbook-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kaddressbook-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libkmahjongg.sh libkmahjongg-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/libkmahjongg-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kajongg.sh kajongg-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kajongg-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kalarm.sh kalarm-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kalarm-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/kdiagram.sh 
-bash -e /dist/build_env/build_scripts/chroot-scripts/eventviews.sh eventviews-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/eventviews-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kalendar.sh kalendar-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kalendar-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/analitza.sh analitza-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/analitza-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kalgebra.sh kalgebra-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kalgebra-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kalzium.sh kalzium-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kalzium-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/eventviews.sh eventviews-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/eventviews-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kalendar.sh kalendar-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kalendar-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/analitza.sh analitza-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/analitza-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kalgebra.sh kalgebra-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kalgebra-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kalzium.sh kalzium-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kalzium-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/gphoto2.sh libgphoto2-2.5.30.tar.xz https://sourceforge.net/projects/gphoto/files/gphoto/2.5.28/gphoto2-2.5.28.tar.xz/download https://sourceforge.net/projects/gphoto/files/libgphoto/2.5.30/libgphoto2-2.5.30.tar.xz/download
-bash -e /dist/build_env/build_scripts/chroot-scripts/kamera.sh kamera-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kamera-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kamoso.sh kamoso-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kamoso-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/libkeduvocdocument.sh libkeduvocdocument-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/libkeduvocdocument-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kanagram.sh kanagram-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kanagram-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kapman.sh kapman-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kapman-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kapptemplate.sh kapptemplate-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kapptemplate-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kate.sh kate-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kate-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/katomic.sh katomic-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/katomic-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kbackup.sh kbackup-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kbackup-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kblackbox.sh kblackbox-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kblackbox-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kbreakout.sh kbreakout-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kbreakout-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kbruch.sh kbruch-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kbruch-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kcachegrind.sh kcachegrind-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kcachegrind-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kcharselect.sh kcharselect-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kcharselect-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kcolorchooser.sh kcolorchooser-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kcolorchooser-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kcron.sh kcron-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kcron-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdebugsettings.sh kdebugsettings-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdebugsettings-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdeconnect.sh kdeconnect-kde-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdeconnect-kde-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdegraphics-mobipocket.sh kdegraphics-mobipocket-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdegraphics-mobipocket-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdegraphics-thumbnailers.sh kdegraphics-thumbnailers-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdegraphics-thumbnailers-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdenetwork-filesharing.sh kdenetwork-filesharing-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdenetwork-filesharing-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/incidenceeditor.sh incidenceeditor-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/incidenceeditor-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/libksieve.sh libksieve-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/libksieve-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ktnef.sh ktnef-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/ktnef-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdepim-addons.sh kdepim-addons-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdepim-addons-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdesdk-kio.sh kdesdk-kio-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdesdk-kio-22.12.2.tar.x
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdesdk-thumbnailers.sh kdesdk-thumbnailers-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdesdk-thumbnailers-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kamera.sh kamera-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kamera-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kamoso.sh kamoso-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kamoso-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libkeduvocdocument.sh libkeduvocdocument-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/libkeduvocdocument-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kanagram.sh kanagram-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kanagram-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kapman.sh kapman-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kapman-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kapptemplate.sh kapptemplate-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kapptemplate-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kate.sh kate-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kate-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/katomic.sh katomic-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/katomic-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kbackup.sh kbackup-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kbackup-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kblackbox.sh kblackbox-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kblackbox-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kbreakout.sh kbreakout-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kbreakout-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kbruch.sh kbruch-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kbruch-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kcachegrind.sh kcachegrind-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kcachegrind-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kcharselect.sh kcharselect-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kcharselect-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kcolorchooser.sh kcolorchooser-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kcolorchooser-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kcron.sh kcron-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kcron-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdebugsettings.sh kdebugsettings-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdebugsettings-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdeconnect.sh kdeconnect-kde-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdeconnect-kde-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdegraphics-mobipocket.sh kdegraphics-mobipocket-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdegraphics-mobipocket-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdegraphics-thumbnailers.sh kdegraphics-thumbnailers-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdegraphics-thumbnailers-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdenetwork-filesharing.sh kdenetwork-filesharing-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdenetwork-filesharing-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/incidenceeditor.sh incidenceeditor-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/incidenceeditor-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libksieve.sh libksieve-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/libksieve-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ktnef.sh ktnef-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ktnef-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdepim-addons.sh kdepim-addons-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdepim-addons-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdesdk-kio.sh kdesdk-kio-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdesdk-kio-22.12.2.tar.x
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdesdk-thumbnailers.sh kdesdk-thumbnailers-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdesdk-thumbnailers-22.12.2.tar.xz
 
 bash -e /dist/build_env/build_scripts/chroot-scripts/libkomparediff2.sh libkomparediff2-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/libkomparediff2-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdevelop.sh kdevelop-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdevelop-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdevelop-pg-qt.sh kdevelop-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdevelop-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdevelop-php.sh kdev-php-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdev-php-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdevelop-python.sh kdev-python-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdev-python-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdf.sh kdf-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdf-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdialog.sh kdialog-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdialog-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kdiamond.sh kdiamond-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kdiamond-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/keditbookmarks.sh keditbookmarks-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/keditbookmarks-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kfind.sh kfind-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kfind-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kfourinline.sh kfourinline-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kfourinline-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kgeography.sh kgeography-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kgeography-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kget.sh kget-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kget-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kgoldrunner.sh kgoldrunner-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kgoldrunner-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kgpg.sh kgpg-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kgpg-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/khangman.sh khangman-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/khangman-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kig.sh kig-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kig-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kigo.sh kigo-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kigo-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/killbots.sh killbots-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/killbots-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kimagemapeditor.sh kimagemapeditor-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kimagemapeditor-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kio-gdrive.sh kio-gdrive-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kio-gdrive-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kio-zeroconf.sh kio-zeroconf-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kio-zeroconf-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kirigami-gallery.sh kirigami-gallery-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kirigami-gallery-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kiriki.sh kiriki-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kiriki-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kiten.sh kiten-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kiten-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kjumpingcube.sh kjumpingcube-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kjumpingcube-22.12.2.tar.xz
-#bash -e /dist/build_env/build_scripts/chroot-scripts/kleopatra.sh kleopatra-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kleopatra-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/klettres.sh klettres-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/klettres-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/klines.sh klines-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/klines-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kmag.sh kmag-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kmag-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kmahjongg.sh kmahjongg-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kmahjongg-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kmail.sh kmail-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kmail-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kmail-account-wizard.sh kmail-account-wizard-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kmail-account-wizard-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kmines.sh kmines-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kmines-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kmix.sh kmix-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kmix-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kmousetool.sh kmousetool-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kmousetool-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kmouth.sh kmouth-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kmouth-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kmplot.sh kmplot-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kmplot-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/knavalbattle.sh knavalbattle-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/knavalbattle-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/knetwalk.sh knetwalk-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/knetwalk-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/knights.sh knights-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/knights-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/knotes.sh knotes-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/knotes-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kolf.sh kolf-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kolf-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kollision.sh kollision-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kollision-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kolourpaint.sh kolourpaint-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kolourpaint-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kompare.sh kompare-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kompare-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/konqueror.sh konqueror-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/konqueror-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/konquest.sh konquest-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/konquest-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kontrast.sh kontrast-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kontrast-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/konversation.sh konversation-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/konversation-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kopete.sh kopete-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kopete-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripfts/korganizer.sh korganizer-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/korganizer-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdevelop.sh kdevelop-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdevelop-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdevelop-pg-qt.sh kdevelop-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdevelop-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdevelop-php.sh kdev-php-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdev-php-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdevelop-python.sh kdev-python-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdev-python-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdf.sh kdf-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdf-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdialog.sh kdialog-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdialog-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kdiamond.sh kdiamond-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kdiamond-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/keditbookmarks.sh keditbookmarks-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/keditbookmarks-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kfind.sh kfind-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kfind-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kfourinline.sh kfourinline-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kfourinline-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kgeography.sh kgeography-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kgeography-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kget.sh kget-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kget-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kgoldrunner.sh kgoldrunner-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kgoldrunner-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kgpg.sh kgpg-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kgpg-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/khangman.sh khangman-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/khangman-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kig.sh kig-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kig-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kigo.sh kigo-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kigo-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/killbots.sh killbots-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/killbots-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kimagemapeditor.sh kimagemapeditor-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kimagemapeditor-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kio-gdrive.sh kio-gdrive-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kio-gdrive-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kio-zeroconf.sh kio-zeroconf-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kio-zeroconf-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kirigami-gallery.sh kirigami-gallery-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kirigami-gallery-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kiriki.sh kiriki-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kiriki-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kiten.sh kiten-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kiten-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kjumpingcube.sh kjumpingcube-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kjumpingcube-22.12.2.tar.xz
+#bash -e /dist/build_env/build_scripts/chroot-scripts/kleopatra.sh kleopatra-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kleopatra-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/klettres.sh klettres-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/klettres-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/klines.sh klines-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/klines-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kmag.sh kmag-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kmag-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kmahjongg.sh kmahjongg-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kmahjongg-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kmail.sh kmail-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kmail-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kmail-account-wizard.sh kmail-account-wizard-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kmail-account-wizard-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kmines.sh kmines-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kmines-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kmix.sh kmix-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kmix-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kmousetool.sh kmousetool-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kmousetool-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kmouth.sh kmouth-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kmouth-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kmplot.sh kmplot-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kmplot-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/knavalbattle.sh knavalbattle-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/knavalbattle-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/knetwalk.sh knetwalk-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/knetwalk-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/knights.sh knights-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/knights-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/knotes.sh knotes-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/knotes-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kolf.sh kolf-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kolf-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kollision.sh kollision-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kollision-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kolourpaint.sh kolourpaint-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kolourpaint-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kompare.sh kompare-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kompare-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/konqueror.sh konqueror-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/konqueror-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/konquest.sh konquest-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/konquest-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kontrast.sh kontrast-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kontrast-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/konversation.sh konversation-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/konversation-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kopete.sh kopete-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kopete-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripfts/korganizer.sh korganizer-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/korganizer-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/fc-solve.sh
-bash -e /dist/build_env/build_scripts/chroot-scripts/kpat.sh kpat-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kpat-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kpat.sh kpat-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kpat-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/freerdp.sh 
 bash -e /dist/build_env/build_scripts/chroot-scripts/libvncserver.sh libvncserver-LibVNCServer-0.9.14.tar.gz https://github.com/LibVNC/libvncserver/archive/refs/tags/LibVNCServer-0.9.14.tar.gz
-bash -e /dist/build_env/build_scripts/chroot-scripts/krdc.sh krdc-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/krdc-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kreversi.sh kreversi-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kreversi-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/krfb.sh krfb-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/krfb-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kruler.sh kruler-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kruler-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kshisen.sh kshisen-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kshisen-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ksirk.sh ksirk-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/ksirk-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ksnakeduel.sh ksnakeduel-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/ksnakeduel-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kspaceduel.sh kspaceduel-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kspaceduel-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ksquares.sh ksquares-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/ksquares-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ksudoku.sh ksudoku-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/ksudoku-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ksystemlog.sh ksystemlog-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/ksystemlog-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kteatime.sh kteatime-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kteatime-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ktimer.sh ktimer-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/ktimer-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ktuberling.sh ktuberling-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/ktuberling-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kturtle.sh kturtle-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kturtle-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ktorrent.sh libktorrent-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/libktorrent-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ktorrent.sh ktorrent-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/ktorrent-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/ktouch.sh ktouch-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/ktouch-22.12.2.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kubrick.sh kubrick-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kubrick-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/krdc.sh krdc-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/krdc-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kreversi.sh kreversi-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kreversi-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/krfb.sh krfb-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/krfb-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kruler.sh kruler-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kruler-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kshisen.sh kshisen-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kshisen-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ksirk.sh ksirk-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ksirk-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ksnakeduel.sh ksnakeduel-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ksnakeduel-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kspaceduel.sh kspaceduel-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kspaceduel-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ksquares.sh ksquares-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ksquares-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ksudoku.sh ksudoku-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ksudoku-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ksystemlog.sh ksystemlog-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ksystemlog-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kteatime.sh kteatime-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kteatime-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ktimer.sh ktimer-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ktimer-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ktuberling.sh ktuberling-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ktuberling-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kturtle.sh kturtle-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kturtle-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ktorrent.sh libktorrent-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/libktorrent-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ktorrent.sh ktorrent-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ktorrent-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/ktouch.sh ktouch-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ktouch-22.12.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kubrick.sh kubrick-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kubrick-22.12.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/audiofile.sh audiofile-0.3.6.tar.xz https://download.gnome.org/sources/audiofile/0.3/audiofile-0.3.6.tar.xz https://www.linuxfromscratch.org/patches/blfs/11.3/audiofile-0.3.6-consolidated_patches-1.patch
-bash -e /dist/build_env/build_scripts/chroot-scripts/kwave.sh kwave-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kwave-22.12.2.tar.xz https://sourceforge.net/projects/id3lib/files/id3lib/3.8.3/id3lib-3.8.3.tar.gz  https://www.linuxfromscratch.org/patches/blfs/11.3/id3lib-3.8.3-consolidated_patches-1.patch https://www.fftw.org/fftw-3.3.10.tar.gz  https://download.gnome.org/sources/librsvg/2.54/librsvg-2.54.5.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/kwordquiz.sh kwordquiz-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/kwordquiz-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/kwave.sh kwave-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kwave-22.12.2.tar.xz https://sourceforge.net/projects/id3lib/files/id3lib/3.8.3/id3lib-3.8.3.tar.gz  https://www.linuxfromscratch.org/patches/blfs/11.3/id3lib-3.8.3-consolidated_patches-1.patch https://www.fftw.org/fftw-3.3.10.tar.gz  https://download.gnome.org/sources/librsvg/2.54/librsvg-2.54.5.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kwordquiz.sh kwordquiz-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/kwordquiz-22.12.2.tar.xz 
 bash -e /dist/build_env/build_scripts/chroot-scripts/libiconv.sh libiconv-1.17.tar.gz https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.17.tar.gz https://ftp.gnu.org/gnu/gettext/gettext-0.21.1.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/hunspell.sh hunspell-1.7.2.tar.gz https://github.com/hunspell/hunspell/releases/download/v1.7.2/hunspell-1.7.2.tar.gz
-bash -e /dist/build_env/build_scripts/chroot-scripts/lokalize.sh lokalize-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/lokalize-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/lskat.sh lskat-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/lskat-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/markdownpart.sh markdownpart-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/markdownpart-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/mbox-importer.sh mbox-importer-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/mbox-importer-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/lokalize.sh lokalize-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/lokalize-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/lskat.sh lskat-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/lskat-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/markdownpart.sh markdownpart-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/markdownpart-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/mbox-importer.sh mbox-importer-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/mbox-importer-22.12.2.tar.xz 
 bash -e /dist/build_env/build_scripts/chroot-scripts/fluidsynth.sh fluidsynth-2.3.1.tar.gz https://github.com/FluidSynth/fluidsynth/archive/refs/tags/v2.3.1.tar.gz
-bash -e /dist/build_env/build_scripts/chroot-scripts/minuet.sh minuet-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/minuet-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/palapeli.sh palapeli-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/palapeli-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/pim-data-exporter.sh pim-data-exporter-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/pim-data-exporter-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/pim-sieve-editor.sh pim-sieve-editor-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/pim-sieve-editor-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/poxml.sh poxml-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/poxml-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/print-manager.sh print-manager-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/print-manager-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/rocs.sh rocs-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/rocs-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/minuet.sh minuet-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/minuet-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/palapeli.sh palapeli-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/palapeli-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/pim-data-exporter.sh pim-data-exporter-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/pim-data-exporter-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/pim-sieve-editor.sh pim-sieve-editor-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/pim-sieve-editor-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/poxml.sh poxml-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/poxml-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/print-manager.sh print-manager-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/print-manager-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/rocs.sh rocs-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/rocs-22.12.2.tar.xz 
 #bash -e /dist/build_env/build_scripts/chroot-scripts/signon.sh signond-master.tar.gz https://gitlab.com/accounts-sso/signond/-/archive/master/signond-master.tar.gz
-#bash -e /dist/build_env/build_scripts/chroot-scripts/signon-kwallet-extension.sh signon-kwallet-extension-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/signon-kwallet-extension-22.12.2.tar.xz 
+#bash -e /dist/build_env/build_scripts/chroot-scripts/signon-kwallet-extension.sh signon-kwallet-extension-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/signon-kwallet-extension-22.12.2.tar.xz 
 bash -e /dist/build_env/build_scripts/chroot-scripts/sane.sh sane-backends-1.0.32.tar.gz https://anduin.linuxfromscratch.org/BLFS/sane/sane-backends-1.0.32.tar.gz https://anduin.linuxfromscratch.org/BLFS/sane/sane-frontends-1.0.14.tar.gz
-bash -e /dist/build_env/build_scripts/chroot-scripts/libksane.sh ksanecore-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/ksanecore-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/libksane.sh libksane-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/libksane-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/skanlite.sh skanlite-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/skanlite-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/skanlite.sh skanpage-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/skanpage-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/spectacle.sh spectacle-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/spectacle-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/step.sh step-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/step-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/svgpart.sh svgpart-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/svgpart-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/sweeper.sh sweeper-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/sweeper-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/umbrello.sh umbrello-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/umbrello-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/yakuake.sh yakuake-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/yakuake-22.12.2.tar.xz 
-bash -e /dist/build_env/build_scripts/chroot-scripts/zanshin.sh zanshin-22.12.2.tar.xz https://download.kde.org/Attic/release-service/22.12.2/src/zanshin-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/libksane.sh ksanecore-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/ksanecore-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/libksane.sh libksane-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/libksane-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/skanlite.sh skanlite-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/skanlite-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/skanlite.sh skanpage-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/skanpage-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/spectacle.sh spectacle-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/spectacle-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/step.sh step-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/step-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/svgpart.sh svgpart-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/svgpart-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/sweeper.sh sweeper-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/sweeper-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/umbrello.sh umbrello-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/umbrello-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/yakuake.sh yakuake-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/yakuake-22.12.2.tar.xz 
+bash -e /dist/build_env/build_scripts/chroot-scripts/zanshin.sh zanshin-22.12.2.tar.xz https://download.kde.org/stable/release-service/22.12.2/src/zanshin-22.12.2.tar.xz 
+
+bash -e /dist/build_env/build_scripts/chroot-scripts/gsettings-desktop-schemas.sh gsettings-desktop-schemas-43.0.tar.xz https://download.gnome.org/sources/gsettings-desktop-schemas/43/gsettings-desktop-schemas-43.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/at-spi2-core.sh at-spi2-core-2.46.0.tar.xz https://download.gnome.org/sources/at-spi2-core/2.46/at-spi2-core-2.46.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/hicolor-icon-theme.sh  hicolor-icon-theme-0.17.tar.xz  https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-0.17.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/gtk+2.sh gtk+-2.24.33.tar.xz https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/adawaita-icon-theme.sh adwaita-icon-theme-43.tar.xz https://download.gnome.org/sources/adwaita-icon-theme/43/adwaita-icon-theme-43.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/sassc.sh sassc-3.6.2.tar.gz https://github.com/sass/sassc/archive/3.6.2/sassc-3.6.2.tar.gz https://github.com/sass/libsass/archive/3.6.5/libsass-3.6.5.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/iso-codes.sh iso-codes-4.12.0.tar.xz https://ftp.debian.org/debian/pool/main/i/iso-codes/iso-codes_4.12.0.orig.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/gtk+3.sh gtk+-3.24.36.tar.xz https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.36.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kuserfeedback.sh kuserfeedback-1.2.0.tar.xz https://download.kde.org/stable/kuserfeedback/kuserfeedback-1.2.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libpwquality.sh libpwquality-1.4.5.tar.bz2 https://github.com/libpwquality/libpwquality/releases/download/libpwquality-1.4.5/libpwquality-1.4.5.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/libqalculate.sh libqalculate-4.5.1.tar.gz https://github.com/Qalculate/libqalculate/releases/download/v4.5.1/libqalculate-4.5.1.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/xcb-util-cursor.sh xcb-util-cursor-0.1.4.tar.xz  https://xcb.freedesktop.org/dist/xcb-util-cursor-0.1.4.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libcanberra.sh libcanberra-0.30.tar.xz  https://0pointer.de/lennart/projects/libcanberra/libcanberra-0.30.tar.xz https://www.linuxfromscratch.org/patches/blfs/11.3/libcanberra-0.30-wayland-1.
+bash -e /dist/build_env/build_scripts/chroot-scripts/libevdev.sh libevdev-1.13.0.tar.xz https://www.freedesktop.org/software/libevdev/libevdev-1.13.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libinput.sh libinput-1.22.1.tar.gz https://gitlab.freedesktop.org/libinput/libinput/-/archive/1.22.1/libinput-1.22.1.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/lm-sensors.sh lm-sensors-3-6-0.tar.gz https://github.com/lm-sensors/lm-sensors/archive/V3-6-0/lm-sensors-3-6-0.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/oxygen-icons5.sh oxygen-icons5-5.103.0.tar.xz https://download.kde.org/stable/frameworks/5.103/oxygen-icons5-5.103.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/accountsservice.sh accountsservice-22.08.8.tar.xz https://www.freedesktop.org/software/accountsservice/accountsservice-22.08.8.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/smartmontools.sh smartmontools-7.3.tar.gz https://downloads.sourceforge.net/smartmontools/smartmontools-7.3.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/libxcvt.sh libxcvt-0.1.2.tar.xz https://www.x.org/pub/individual/lib/libxcvt-0.1.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/xbitmaps.sh xbitmaps-1.1.2.tar.bz2 https://www.x.org/pub/individual/data/xbitmaps-1.1.2.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/xorgapps.sh
+bash -e /dist/build_env/build_scripts/chroot-scripts/xcursor-themes.sh xcursor-themes-1.0.6.tar.bz2 https://www.x.org/pub/individual/data/xcursor-themes-1.0.6.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/xorgfonts.sh 
+bash -e /dist/build_env/build_scripts/chroot-scripts/libtirpc.sh libtirpc-1.3.3.tar.bz2 https://downloads.sourceforge.net/libtirpc/libtirpc-1.3.3.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/xwayland.sh xwayland-22.1.8.tar.xz https://www.x.org/pub/individual/xserver/xwayland-22.1.8.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/sbc.sh sbc-2.0.tar.xz https://www.kernel.org/pub/linux/bluetooth/sbc-2.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/pipewire.sh pipewire-0.3.66.tar.gz  https://github.com/PipeWire/pipewire/archive/0.3.66/pipewire-0.3.66.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/kde-plasma.sh
+bash -e /dist/build_env/build_scripts/chroot-scripts/twm.sh twm-1.0.12.tar.xz https://www.x.org/pub/individual/app/twm-1.0.12.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/xclock.sh xclock-1.1.1.tar.xz https://www.x.org/pub/individual/app/xclock-1.1.1.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/xterm.sh xterm-379.tgz https://invisible-mirror.net/archives/xterm/xterm-379.tgz
+bash -e /dist/build_env/build_scripts/chroot-scripts/xinit.sh xinit-1.4.2.tar.xz https://www.x.org/pub/individual/app/xinit-1.4.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/xorg-server.sh xorg-server-21.1.7.tar.xz https://www.x.org/pub/individual/xserver/xorg-server-21.1.7.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/xorg-server.sh xorg-server-21.1.7.tar.xz https://www.x.org/pub/individual/xserver/xorg-server-21.1.7.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/xorg-libinput.sh xf86-input-libinput-1.2.1.tar.xz https://www.x.org/pub/individual/driver/xf86-input-libinput-1.2.1.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/xorg-fbdev.sh xf86-video-fbdev-0.5.0.tar.bz2 https://www.x.org/pub/individual/driver/xf86-video-fbdev-0.5.0.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/xorg-synaptics.sh xf86-input-synaptics-1.9.2.tar.xz https://www.x.org/pub/individual/driver/xf86-input-synaptics-1.9.2.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/xorg-evdev.sh xf86-input-evdev-2.10.6.tar.bz2 https://www.x.org/pub/individual/driver/xf86-input-evdev-2.10.6.tar.bz2
+bash -e /dist/build_env/build_scripts/chroot-scripts/xorg-vmware.sh xf86-video-vmware-13.4.0.tar.xz https://www.x.org/pub/individual/driver/xf86-video-vmware-13.4.0.tar.xz
+bash -e /dist/build_env/build_scripts/chroot-scripts/intel-gmmlib.sh gmmlib-intel-gmmlib-22.3.4.tar.gz https://github.com/intel/gmmlib/archive/refs/tags/intel-gmmlib-22.3.4.tar.gz
+bash -e /dist/build_env/build_scripts/chroot-scripts/intel-media-driver.sh media-driver-intel-media-23.1.2.tar.gz https://github.com/intel/media-driver/archive/refs/tags/intel-media-23.1.2.tar.gz

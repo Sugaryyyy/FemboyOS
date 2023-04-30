@@ -28,6 +28,4 @@ cd blfs-systemd-units-20220720
 
 make install-dhcpcd
 
-systemctl enable dhcpcd@eth0
-
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 

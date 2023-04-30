@@ -1,7 +1,7 @@
 TO DO BEFORE FemboyOS RELEASE (not in order):
 - ~~Fix Initramfs and Systemd~~ *Done!*
-- Add Graphics Drivers 
-- Add KDE 
+- ~~Add Graphics Drivers~~ *Done!* 
+- ~~Add KDE~~ *Done!* 
 - ~~Add Networking~~ *Done!*
 - Add Sound 
 - Add Emerge (Portage Package Manager) (if possible) 

@@ -46,6 +46,4 @@ cd blfs-systemd-units-20220720
 
 make install-dhclient
 
-systemctl enable dhclient@eth0
-
 . /dist/build_env/build_scripts/inc-end.sh $1 $(basename $0) 
