@@ -706,7 +706,6 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/xclock.sh xclock-1.1.1.tar.
 bash -e /dist/build_env/build_scripts/chroot-scripts/xterm.sh xterm-379.tgz https://invisible-mirror.net/archives/xterm/xterm-379.tgz
 bash -e /dist/build_env/build_scripts/chroot-scripts/xinit.sh xinit-1.4.2.tar.xz https://www.x.org/pub/individual/app/xinit-1.4.2.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/xorg-server.sh xorg-server-21.1.7.tar.xz https://www.x.org/pub/individual/xserver/xorg-server-21.1.7.tar.xz
-bash -e /dist/build_env/build_scripts/chroot-scripts/xorg-server.sh xorg-server-21.1.7.tar.xz https://www.x.org/pub/individual/xserver/xorg-server-21.1.7.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/xorg-libinput.sh xf86-input-libinput-1.2.1.tar.xz https://www.x.org/pub/individual/driver/xf86-input-libinput-1.2.1.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/xorg-fbdev.sh xf86-video-fbdev-0.5.0.tar.bz2 https://www.x.org/pub/individual/driver/xf86-video-fbdev-0.5.0.tar.bz2
 bash -e /dist/build_env/build_scripts/chroot-scripts/xorg-synaptics.sh xf86-input-synaptics-1.9.2.tar.xz https://www.x.org/pub/individual/driver/xf86-input-synaptics-1.9.2.tar.xz
