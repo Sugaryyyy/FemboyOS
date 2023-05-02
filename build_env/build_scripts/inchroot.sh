@@ -109,7 +109,7 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/cpio.sh cpio-2.13.tar.bz2
 bash -e /dist/build_env/build_scripts/chroot-scripts/mkinitramfs.sh
 
 
-bash -e /dist/build_env/build_scripts/chroot-scripts/neofetch.sh 
+
 bash -e /dist/build_env/build_scripts/chroot-scripts/motd.sh 
 
 bash -e /dist/build_env/build_scripts/chroot-scripts/libarchive.sh libarchive-3.6.2.tar.xz
@@ -117,7 +117,7 @@ bash -e /dist/build_env/build_scripts/chroot-scripts/curl.sh curl-7.88.1.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/libuv.sh libuv-v1.44.2.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/cmake.sh cmake-3.25.2.tar.gz
 bash -e /dist/build_env/build_scripts/chroot-scripts/git.sh git-2.39.2.tar.xz
-
+bash -e /dist/build_env/build_scripts/chroot-scripts/neofetch.sh 
 
 echo "Setting up networking :3"
 

@@ -1,0 +1,81 @@
+#!/usr/bin/env python3
+""" Reading the config file and making a run.sh shell file. """
+import sys
+import os
+
+print("Reading config file.")
+
+try:
+    open("make/FEM_CONFIG", "r", encoding="utf-8")
+except FileNotFoundError:
+    sys.exit("FEM_CONFIG file not found! run make and/or make config first!")
+
+with open("make/FEM_CONFIG", "r", encoding="utf-8") as input_file:
+    with open("make/FEM_CONFIG.tmp", "w", encoding="utf-8") as output_file:
+        for line in input_file:
+            if not line.strip("\n").startswith("#"):
+                output_file.write(line)
+
+f = open("make/FEM_CONFIG.tmp", "r+", encoding="utf-8")
+content = f.read()
+f.close()
+
+match "CONFIG_BUSYBOX" in content:
+    case True:
+        BUSYBOX = True
+    case False:
+        BUSYBOX = False
+
+match "CONFIG_NETWORKING" in content:
+    case True:
+        NETWORKING = True
+    case False:
+        NETWORKING = False
+
+match "CONFIG_OPT_SHELLS" in content:
+    case True:
+        SHELLS = True
+    case False:
+        SHELLS = False
+
+match "CONFIG_LINKS" in content:
+    case True:
+        LINKS = True
+    case False:
+        LINKS = False
+
+match "CONFIG_KDE" in content:
+    case True:
+        KDE = True
+    case False:
+        KDE = False
+
+match "CONFIG_LIMINE" in content:
+    case True:
+        LIMINE = True
+    case False:
+        LIMINE = False
+
+match "CONFIG_FIREFOX" in content:
+    case True:
+        FIREFOX = True
+    case False:
+        FIREFOX = False
+
+print("Found config: \n")
+print(f"Busybox: {str(BUSYBOX)}")
+print(f"Networking: {str(NETWORKING)}")
+print(f"Optional shells: {str(SHELLS)}")
+print(f"Links web browser: {str(LINKS)}")
+print(f"KDE Plasma: {str(KDE)}")
+print(f"Firefox: {str(FIREFOX)}")
+print(f"Use Limine instead of GRUB: {str(LIMINE)} \n")
+
+os.remove("make/FEM_CONFIG.tmp")
+print("Configurating the shell file.")
+
+runfile = open("make/run.sh", "w", encoding="utf-8")
+os.system("chmod +x make/run.sh")
+runfile.write("#/!bin/bash \n")
+runfile.write("# Run compilation file for FemboyOS, do not edit! \n")
+runfile.write(f": '\nConfiguration: {content[:-1]}' \n")
