@@ -1,4 +1,3 @@
-#!/bin/bash 
 #!/bin/bash
 echo "Running from chroot!"
 echo
