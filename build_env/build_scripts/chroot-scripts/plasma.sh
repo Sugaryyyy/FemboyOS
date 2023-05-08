@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 url=https://download.kde.org/stable/plasma/5.26.5/
 wget -r -nH -nd -A '*.xz' -np $url

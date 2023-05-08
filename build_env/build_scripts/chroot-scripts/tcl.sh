@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo
 echo "Processing tcl8.6.13-src.tar.gz >w<"
 echo

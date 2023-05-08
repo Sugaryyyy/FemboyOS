@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc $2
 cp intel-gmmlib-22.3.4.tar.gz gmmlib-intel-gmmlib-22.3.4.tar.gz

@@ -1,3 +1,4 @@
+#!/bin/bash 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 patch -Np1 -i ../bzip2-1.0.8-install_docs-1.patch

@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc  https://downloads.xiph.org/releases/vorbis/libvorbis-1.3.7.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

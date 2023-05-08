@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://downloads.xiph.org/releases/flac/flac-1.4.2.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

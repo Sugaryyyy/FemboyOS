@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://mesa.freedesktop.org/archive/mesa-22.3.5.tar.xz
 wget -nc https://www.linuxfromscratch.org/patches/blfs/11.3/mesa-22.3.5-add_xdemos-1.patch 

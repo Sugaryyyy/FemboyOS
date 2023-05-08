@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://www.x.org/pub/individual/lib/libXdmcp-1.1.4.tar.xz
 

@@ -1,3 +1,4 @@
+#!/bin/bash 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 PYTHONPATH=src pip3 wheel -w dist --no-build-isolation --no-deps $PWD

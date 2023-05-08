@@ -1,3 +1,4 @@
+#!/bin/bash 
 . $DIST_ROOT/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
 
 tar -xf ../mpfr-4.2.0.tar.xz

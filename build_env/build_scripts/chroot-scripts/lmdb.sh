@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc $2
 cp LMDB_0.9.29.tar.gz lmdb-LMDB_0.9.29.tar.gz

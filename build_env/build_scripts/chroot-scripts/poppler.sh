@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://poppler.freedesktop.org/poppler-23.02.0.tar.xz
 wget -nc https://poppler.freedesktop.org/poppler-data-0.4.12.tar.gz

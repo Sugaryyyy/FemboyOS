@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://github.com/qpdf/qpdf/releases/download/v11.2.0/qpdf-11.2.0.tar.gz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

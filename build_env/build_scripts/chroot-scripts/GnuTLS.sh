@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://www.gnupg.org/ftp/gcrypt/gnutls/v3.8/gnutls-3.8.0.tar.xz
 

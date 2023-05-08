@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo
 echo "GCC Pass 1"
 echo

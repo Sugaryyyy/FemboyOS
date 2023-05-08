@@ -1,3 +1,4 @@
+#!/bin/bash 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 sed -i '/"lib64"/s/64//' Modules/GNUInstallDirs.cmake &&

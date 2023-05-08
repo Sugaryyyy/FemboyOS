@@ -1,3 +1,4 @@
+#!/bin/bash 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 sed -i '/The name/,+2 d' src/global.c

@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/sgml-common-0.6.3.tgz
 wget -nc https://www.linuxfromscratch.org/patches/blfs/11.2/sgml-common-0.6.3-manpage-1.patch

@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://download.kde.org/stable/frameworks/5.103/extra-cmake-modules-5.103.0.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://www.freedesktop.org/software/fontconfig/release/fontconfig-2.14.0.tar.xz
 

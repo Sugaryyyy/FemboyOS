@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://files.pythonhosted.org/packages/source/P/Pygments/Pygments-2.14.0.tar.gz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

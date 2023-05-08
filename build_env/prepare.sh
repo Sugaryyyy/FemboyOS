@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo "Testing \$LFS and \$DIST_ROOT variables, if you don't have them set,"
 echo "\n\$LFS is: '(path to FemboyOS)/build_env/build_root' (eg. /basia/FemboyOS/build_env/build_root/), and \$DIST_ROOT is (path to FemboyOS) (eg. /basia/FemboyOS/)"
 

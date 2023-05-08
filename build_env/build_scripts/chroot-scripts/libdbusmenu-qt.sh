@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc $2
 cp libdbusmenu-qt_0.9.3+16.04.20160218.orig.tar.gz libdbusmenu-qt-0.9.3+16.04.20160218.tar.gz

@@ -1,3 +1,4 @@
+#!/bin/bash 
 mkdir -pv /boot/efi &&
 mount -v -t vfat /dev/sda1 /boot/efi
 

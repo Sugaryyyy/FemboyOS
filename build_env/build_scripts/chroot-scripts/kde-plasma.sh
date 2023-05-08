@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources
 echo "Compiling KDE Plasma!"
 export QT5DIR=/opt/qt5

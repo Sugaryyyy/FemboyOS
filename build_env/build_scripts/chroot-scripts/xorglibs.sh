@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo "Installing xOrg Libraries >w<"
 
 cd /sources/

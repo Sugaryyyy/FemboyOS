@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/ghostscript-10.0.0.tar.xz
 wget -nc https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz

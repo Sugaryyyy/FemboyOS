@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://github.com/jasper-software/jasper/archive/version-4.0.0/jasper-4.0.0.tar.gz
 mv jasper-3.0.6.tar.gz jasper-version-3.0.6.tar.gz

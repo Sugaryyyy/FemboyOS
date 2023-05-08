@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc $2
 mv download gphoto2-2.5.28.tar.xz

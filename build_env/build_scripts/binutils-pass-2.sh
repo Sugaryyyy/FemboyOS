@@ -1,3 +1,4 @@
+#!/bin/bash 
 . $DIST_ROOT/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
 
 sed '6009s/$add_dir//' -i ltmain.sh

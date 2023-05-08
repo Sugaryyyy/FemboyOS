@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://www.openprinting.org/download/cups-filters/cups-filters-1.28.16.tar.xz
 

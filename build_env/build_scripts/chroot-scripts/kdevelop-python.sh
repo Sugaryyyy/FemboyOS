@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 rm -rf kdev-python/
 git clone https://invent.kde.org/kdevelop/kdev-python

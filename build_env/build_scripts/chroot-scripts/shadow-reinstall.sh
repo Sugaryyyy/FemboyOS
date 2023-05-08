@@ -1,3 +1,4 @@
+#!/bin/bash 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
 sed -i 's@DICTPATH.*@DICTPATH\t/lib/cracklib/pw_dict@' etc/login.defs
 

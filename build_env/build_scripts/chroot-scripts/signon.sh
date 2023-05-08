@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc $2
 echo "Downloading make dependencies (doxygen)"

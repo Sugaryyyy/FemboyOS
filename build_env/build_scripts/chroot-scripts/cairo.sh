@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://download.gnome.org/sources/cairo/1.17/cairo-1.17.6.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

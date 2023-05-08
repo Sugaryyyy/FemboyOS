@@ -1,3 +1,4 @@
+#!/bin/bash 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 echo '#define SYS_VIMRC_FILE "/etc/vimrc"' >> src/feature.h

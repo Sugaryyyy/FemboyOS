@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://github.com/OpenPrinting/cups/releases/download/v2.4.2/cups-2.4.2-source.tar.gz
 cp cups-2.4.2-source.tar.gz cups-2.4.2.tar.gz

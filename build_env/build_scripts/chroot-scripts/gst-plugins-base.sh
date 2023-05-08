@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://gstreamer.freedesktop.org/src/gst-plugins-base/gst-plugins-base-1.22.0.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc ftp://ftp.freedesktop.org/pub/mesa/glu/glu-9.0.2.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

@@ -1,3 +1,4 @@
+#!/bin/bash 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 patch -Np1 -i ../grub-2.06-upstream_fixes-1.patch

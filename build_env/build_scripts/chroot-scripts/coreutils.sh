@@ -1,3 +1,4 @@
+#!/bin/bash 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 patch -Np1 -i ../coreutils-9.1-i18n-1.patch

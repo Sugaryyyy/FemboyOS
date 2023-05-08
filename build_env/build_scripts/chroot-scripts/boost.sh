@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/boost_1_81_0.tar.bz2
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://archive.mozilla.org/pub/firefox/releases/102.8.0esr/source/firefox-102.8.0esr.source.tar.xz
 tar -xf firefox-102.8.0esr.source.tar.xz

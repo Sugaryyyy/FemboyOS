@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget https://downloads.sourceforge.net/project/dejavu/dejavu/2.37/dejavu-fonts-ttf-2.37.tar.bz2
 

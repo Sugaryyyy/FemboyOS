@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://sqlite.org/2022/sqlite-autoconf-3400100.tar.gz
 wget -nc https://sqlite.org/2022/sqlite-doc-3400100.zip

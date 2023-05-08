@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget https://ftp.gnu.org/gnu/nettle/nettle-3.8.1.tar.gz
 

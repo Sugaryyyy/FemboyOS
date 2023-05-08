@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget  https://xorg.freedesktop.org/archive/individual/lib/libxcb-1.15.tar.xz
 

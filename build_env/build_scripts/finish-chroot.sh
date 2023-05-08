@@ -1,3 +1,4 @@
+#!/bin/bash 
 #!/bin/bash
 mkdir -pv /{boot,home,mnt,opt,srv}
 

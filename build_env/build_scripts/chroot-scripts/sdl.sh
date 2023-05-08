@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://www.libsdl.org/release/SDL-1.2.15.tar.gz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

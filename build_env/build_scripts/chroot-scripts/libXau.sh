@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://www.x.org/pub/individual/lib/libXau-1.0.11.tar.xz
 

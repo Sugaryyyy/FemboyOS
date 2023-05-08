@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo
 echo "Processing dracut.sh >w<"
 echo

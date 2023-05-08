@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo "Mounting ${LFS:?}"
 echo "Binding ${DIST_ROOT:?}"
 

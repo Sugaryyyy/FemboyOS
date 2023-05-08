@@ -1,3 +1,4 @@
+#!/bin/bash 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
  
         ( export CFLAGS="${CFLAGS:--g -O2} -Wall -fno-strict-aliasing                 \

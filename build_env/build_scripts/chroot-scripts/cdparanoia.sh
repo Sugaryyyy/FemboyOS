@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://downloads.xiph.org/releases/cdparanoia/cdparanoia-III-10.2.src.tgz
 wget -nc https://www.linuxfromscratch.org/patches/blfs/11.2/cdparanoia-III-10.2-gcc_fixes-1.patch

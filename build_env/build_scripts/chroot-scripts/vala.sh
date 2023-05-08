@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources
 wget -nc https://download.gnome.org/sources/vala/0.56/vala-0.56.4.tar.xz
 

@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget https://xorg.freedesktop.org/archive/individual/proto/xorgproto-2022.2.tar.xz
 

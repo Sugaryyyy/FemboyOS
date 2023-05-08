@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo "Installing Busybox"
 cd /sources
 cp busybox-x86_64 /usr/bin/busybox

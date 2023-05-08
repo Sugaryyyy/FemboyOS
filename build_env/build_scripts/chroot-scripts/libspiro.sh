@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc $2
 cp libspiro-dist-20220722.tar.gz libspiro-20220722.tar.gz

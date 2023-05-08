@@ -1,3 +1,4 @@
+#!/bin/bash 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
     
 gzip -cd ../libpng-1.6.39-apng.patch.gz | patch -p1

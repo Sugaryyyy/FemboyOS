@@ -1,3 +1,4 @@
+#!/bin/bash 
 cat > /etc/fstab << "EOF"
 # Begin /etc/fstab
 

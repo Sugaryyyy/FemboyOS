@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 git clone https://invent.kde.org/graphics/kdiagram
 echo "Processing kdiagram.sh >w<"

@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources
 wget -nc https://ftp.gnu.org/gnu/libunistring/libunistring-1.1.tar.xz
 

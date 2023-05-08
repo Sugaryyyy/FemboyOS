@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://download.osgeo.org/libtiff/tiff-4.5.0.tar.gz
 

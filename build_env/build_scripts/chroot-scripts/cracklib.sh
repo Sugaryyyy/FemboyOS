@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://github.com/cracklib/cracklib/releases/download/v2.9.8/cracklib-2.9.8.tar.bz2
 wget -nc https://github.com/cracklib/cracklib/releases/download/v2.9.8/cracklib-words-2.9.8.bz2

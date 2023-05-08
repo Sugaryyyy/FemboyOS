@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://gitlab.freedesktop.org/polkit/polkit/-/archive/121/polkit-121.tar.gz
 

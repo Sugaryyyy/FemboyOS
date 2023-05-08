@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc  https://people.freedesktop.org/~hughsient/releases/libgusb-0.3.10.tar.xz
 

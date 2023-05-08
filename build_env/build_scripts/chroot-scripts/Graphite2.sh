@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget  https://github.com/silnrsi/graphite/releases/download/1.3.14/graphite2-1.3.14.tgz
 

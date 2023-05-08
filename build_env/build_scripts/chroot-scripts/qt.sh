@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://download.qt.io/archive/qt/5.15/5.15.8/single/qt-everywhere-opensource-src-5.15.8.tar.xz
 wget -nc https://www.linuxfromscratch.org/patches/blfs/11.3/qt-everywhere-opensource-src-5.15.8-kf5-1.patch

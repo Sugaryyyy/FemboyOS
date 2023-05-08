@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc  https://files.pythonhosted.org/packages/source/M/Mako/Mako-1.2.4.tar.gz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

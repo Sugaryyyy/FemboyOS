@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 pip3 install doxypypy doxyqml pyyaml requests
 url=https://download.kde.org/stable/frameworks/5.103/

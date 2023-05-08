@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo "Installing neofetch \ hyfetch >w<"
 
 cd /sources/

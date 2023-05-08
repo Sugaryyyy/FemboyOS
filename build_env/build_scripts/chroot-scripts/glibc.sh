@@ -1,3 +1,4 @@
+#!/bin/bash 
 set -x
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
 

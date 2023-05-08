@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo 11.3-systemd > /etc/lfs-release
 
 cat > /etc/lsb-release << "EOF"

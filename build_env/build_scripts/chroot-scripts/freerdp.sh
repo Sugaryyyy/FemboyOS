@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo "Processing FreeRDP's dependencies :3"
 
 pip3 install jsonschema

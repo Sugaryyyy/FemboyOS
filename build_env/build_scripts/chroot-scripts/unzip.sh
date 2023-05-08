@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://downloads.sourceforge.net/infozip/unzip60.tar.gz
 wget -nc  https://www.linuxfromscratch.org/patches/blfs/11.3/unzip-6.0-consolidated_fixes-1.patch

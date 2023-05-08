@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo "Entering chroot: ${LFS:?}"
 
 chown -R root:root $LFS/{usr,lib,var,etc,bin,sbin,tools}

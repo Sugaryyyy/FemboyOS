@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo "Setting MOTD!"
 
 cat > /etc/motd << "EOF"

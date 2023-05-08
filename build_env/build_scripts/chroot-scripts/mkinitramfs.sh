@@ -1,3 +1,4 @@
+#!/bin/bash 
 cat > /usr/sbin/mkinitramfs << "EOF"
 #!/bin/bash
 # This file based in part on the mkinitramfs script for the LFS LiveCD

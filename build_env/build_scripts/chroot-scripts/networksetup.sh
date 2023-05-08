@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo "Setting up Network."
 
 systemctl disable systemd-networkd-wait-online

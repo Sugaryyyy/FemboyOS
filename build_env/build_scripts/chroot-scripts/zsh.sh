@@ -1,3 +1,4 @@
+#!/bin/bash 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
 
 tar --strip-components=1 -xvf ../zsh-5.9-doc.tar.xz

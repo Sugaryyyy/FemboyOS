@@ -1,3 +1,4 @@
+#!/bin/bash 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
 pip3 install jinja2
 patch -Np1 -i ../systemd-252-security_fix-1.patch

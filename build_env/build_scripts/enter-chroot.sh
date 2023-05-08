@@ -1,3 +1,4 @@
+#!/bin/bash 
 
 echo "Entering chroot: ${LFS:?}"
 

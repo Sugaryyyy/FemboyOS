@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc $2
 cp v2.3.1.tar.gz fluidsynth-2.3.1.tar.gz 

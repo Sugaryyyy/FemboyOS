@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources
 wget -nc https://github.com/docbook/xslt10-stylesheets/releases/download/release/1.79.2/docbook-xsl-nons-1.79.2.tar.bz2
 wget -nc https://www.linuxfromscratch.org/patches/blfs/11.2/docbook-xsl-nons-1.79.2-stack_fix-1.patch

@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc hhttps://github.com/llvm/llvm-project/releases/download/llvmorg-15.0.7/llvm-15.0.7.src.tar.xz
 wget -nc https://anduin.linuxfromscratch.org/BLFS/llvm/llvm-cmake-15.0.7.src.tar.xz

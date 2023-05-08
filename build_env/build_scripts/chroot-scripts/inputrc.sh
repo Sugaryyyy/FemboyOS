@@ -1,3 +1,4 @@
+#!/bin/bash 
 cat > /etc/inputrc << "EOF"
 # Begin /etc/inputrc
 # Modified by Chris Lynn <roryo@roryo.dynup.net>

@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 cat > app-7.md5 << "EOF"
 5d3feaa898875484b6b340b3888d49d8  iceauth-1.0.9.tar.xz

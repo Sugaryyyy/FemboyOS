@@ -1,3 +1,4 @@
+#!/bin/bash 
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
 
 sed -e 's/+01,234,567/+1,234,567 /' \

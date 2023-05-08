@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc  https://downloads.xiph.org/releases/theora/libtheora-1.1.1.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

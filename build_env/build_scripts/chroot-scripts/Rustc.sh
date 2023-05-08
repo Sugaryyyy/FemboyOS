@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://static.rust-lang.org/dist/rustc-1.67.1-src.tar.xz
 

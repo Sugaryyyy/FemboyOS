@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc  https://github.com/gregkh/usbutils/archive/v015/usbutils-015.tar.gz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

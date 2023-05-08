@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc $2
 cp v0.13.2.tar.gz qtkeychain-0.13.2.tar.gz

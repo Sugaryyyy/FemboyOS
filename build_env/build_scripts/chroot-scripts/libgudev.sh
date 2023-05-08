@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget https://download.gnome.org/sources/libgudev/237/libgudev-237.tar.xz
 

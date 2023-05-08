@@ -1,3 +1,4 @@
+#!/bin/bash 
 set -e
 
 echo "Dist Root: ${DIST_ROOT:?}"

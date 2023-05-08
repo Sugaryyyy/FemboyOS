@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo " The following command will overwrite the current boot loader."
 echo "Do not run the command if this is not desired, for example,"
 echo "if using a third party boot manager to manage the Master Boot Record (MBR). "

@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget https://github.com/unicode-org/icu/releases/download/release-71-1/icu4c-71_1-src.tgz
 

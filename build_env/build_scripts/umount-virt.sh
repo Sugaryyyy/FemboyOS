@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo "Unmounting ${LFS:?}"
 echo "Unbinding ${DIST_ROOT:?}"
 

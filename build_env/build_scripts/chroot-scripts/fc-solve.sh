@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 echo "Installing dependencies"
 cpan Moo

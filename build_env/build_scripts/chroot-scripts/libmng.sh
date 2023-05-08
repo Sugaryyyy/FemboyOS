@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc https://downloads.sourceforge.net/libmng/libmng-2.0.3.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 

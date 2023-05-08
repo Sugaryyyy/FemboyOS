@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo "Installing squashfs-tools >W<"
 
 cd /sources/

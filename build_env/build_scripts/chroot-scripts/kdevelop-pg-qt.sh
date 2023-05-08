@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 rm -rf kdevelop-pg-qt/
 git clone https://invent.kde.org/kdevelop/kdevelop-pg-qt

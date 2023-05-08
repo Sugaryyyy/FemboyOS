@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc $2
 cp intel-media-23.1.2.tar.gz media-driver-intel-media-23.1.2.tar.gz

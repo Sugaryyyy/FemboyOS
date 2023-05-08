@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc $2
 cp LibVNCServer-0.9.14.tar.gz libvncserver-LibVNCServer-0.9.14.tar.gz

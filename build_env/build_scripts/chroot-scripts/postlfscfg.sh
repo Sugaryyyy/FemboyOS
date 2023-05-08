@@ -1,3 +1,4 @@
+#!/bin/bash 
 echo "Configurating environment!"
 
 cat > /etc/locale.conf << "EOF"

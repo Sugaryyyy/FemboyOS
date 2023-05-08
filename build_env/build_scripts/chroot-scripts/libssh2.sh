@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget https://www.libssh2.org/download/libssh2-1.10.0.tar.gz
 

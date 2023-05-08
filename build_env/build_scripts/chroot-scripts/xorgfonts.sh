@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 cat > font-7.md5 << "EOF"
 ec6cea7a46c96ed6be431dfbbb78f366  font-util-1.4.0.tar.xz

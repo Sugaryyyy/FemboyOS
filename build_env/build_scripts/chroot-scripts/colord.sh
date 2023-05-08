@@ -1,3 +1,4 @@
+#!/bin/bash 
 cd /sources/
 wget -nc  https://www.freedesktop.org/software/colord/releases/colord-1.4.6.tar.xz
 . /dist/build_env/build_scripts/inc-start.sh $1 $(basename $0) 
