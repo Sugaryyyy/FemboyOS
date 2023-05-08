@@ -1,6 +1,6 @@
 echo "Installing neofetch \ hyfetch >w<"
 
-cd /tmp
+cd /sources/
 
 git clone https://github.com/hykilpikonna/hyfetch.git
 cd hyfetch

@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Running from chroot!"
 echo
 echo
@@ -165,15 +166,13 @@ echo "Testing internet connection:"
 
 wget -q --spider http://google.com
 
-if [ $? -eq 0 ]; then
+if wget -q --spider http://google.com; then
     echo "Online"
 else
     echo "Offline, you need a internet connection to install a DE."
     echo "Bailing out, you're on your own. Good luck :3"
-    exit -1
+    exit 255
 fi
-
-
 
 echo "Setting up the Xorg Build Environment"    
 export XORG_PREFIX="/usr"
@@ -195,16 +194,6 @@ cat > /etc/sudoers.d/xorg << EOF
 Defaults env_keep += XORG_PREFIX
 Defaults env_keep += XORG_CONFIG
 EOF
-
-echo "
-PATH="/usr/bin:/usr/sbin:/bin:/sbin:/opt/rustc/bin:/opt/qt5/bin/:/opt/kf5/bin/"
-LD_LIBRARY_PATH="/usr/lib/:/usr/local/lib:/opt/rustc/lib:/opt/qt5/lib:/opt/kf5/lib"
-export QT5_DIR="/opt/qt5"
-export XORG_PREFIX="/usr"
-export XORG_CONFIG=\"--prefix=$XORG_PREFIX --sysconfdir=/etc --localstatedir=/var --disable-static\"
-export QT5_PREFIX="/opt/qt5"
-export KF5_PREFIX="/opt/kf5"
-" >> /etc/environment
 
 bash -e /dist/build_env/build_scripts/chroot-scripts/extra-cmake-modules.sh extra-cmake-modules-5.103.0.tar.xz
 bash -e /dist/build_env/build_scripts/chroot-scripts/xcb-proto.sh xcb-proto-1.15.2.tar.xz
