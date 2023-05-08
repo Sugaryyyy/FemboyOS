@@ -26,10 +26,10 @@ tar\
 texinfo\
 xz
 
-### Build
+## Build
 
 To read on how to build FemboyOS, check the [`BUILDING.md`](BUILDING.md) file
 
-#### Package manager
+## Package manager
 
 FemboyOS uses [scratchpkg](https://github.com/venomlinux/scratchpkg), the package manager from Venom Linux.
