@@ -1,0 +1,41 @@
+{
+    "LFS": {
+        "Acl": {
+            "Version": "2.3.1",
+            "Link": "https://download.savannah.gnu.org/releases/acl/acl-2.3.1.tar.xz",
+            "MD5": "95ce715fe09acca7c12d3306d0f076b2"
+        },
+        "Attr": {
+            "Version": "2.5.1",
+            "Link": "https://download.savannah.gnu.org/releases/attr/attr-2.5.1.tar.gz",
+            "MD5": "ac1c5a7a084f0f83b8cace34211f64d8"
+        },
+        "Autoconf": {
+            "Version": "2.71",
+            "Link": "https://ftp.gnu.org/gnu/autoconf/autoconf-2.71.tar.xz",
+            "MD5": "12cfa1687ffa2606337efe1a64416106"
+        },
+        "Automake": {},
+        "Binutils": {
+            "Version": "2.40",
+            "Link": "https://sourceware.org/pub/binutils/releases/binutils-2.40.tar.xz",
+            "MD5": "007b59bd908a737c06e5a8d3d2c737eb"
+        },
+        "GCC": {
+            "Version": "12.2.0",
+            "Link": "https://ftp.gnu.org/gnu/gcc/gcc-12.2.0/gcc-12.2.0.tar.xz",
+            "MD5": "73bafd0af874439dcdb9fc063b6fb069"
+        },
+        "Linux": {
+            "Version": "6.5",
+            "Link": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.5.tar.xz",
+            "MD5": "42c2796f9babe4a1be3f2001c817ff4a"
+        },
+        "M4": {
+            "Version": "1.4.19",
+            "Link": "https://ftp.gnu.org/gnu/m4/m4-1.4.19.tar.xz",
+            "MD5": "0d90823e1426f1da2fd872df0311298d"
+        }
+    },
+    "BLFS": {}
+}
