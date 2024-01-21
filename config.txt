@@ -1,0 +1,5 @@
+Silent=False
+Debug=False
+Target=/home/sugary/Documents/FemboyOS-rewrite/build_root
+Dist_root=/home/sugary/Documents/FemboyOS-rewrite
+Init=systemd

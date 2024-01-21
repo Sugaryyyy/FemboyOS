@@ -1,3 +1,6 @@
 build_env/build_root
 .vscode/
 build_env/make
+packages/src/*
+lib/fempkg/__pycache__/*
+femcfg.ini

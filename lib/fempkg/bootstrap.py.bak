@@ -1,0 +1,136 @@
+"""
+FemboyOS's package managment library for bootstrapping.
+"""
+
+    import requests
+    import os
+    import json
+    from lib.fempkg.errorhandling import error
+    import re
+    import pretty_downloader
+
+def Update(repository: str, debug: bool):
+    print("-> Updating FemboyOS's package list.")
+
+    # Gets the package list location
+
+    pkg_list = os.getcwd() + "/packages/package-list.json"
+
+    # Requests the package list file
+    listrepository = repository + "/package-list.json"
+    # r = requests.get(url=listrepository, allow_redirects=True)
+    # open(pkg_list, "wb").write(r.content)
+    print("-> Done!")
+
+    # Gets the out of date packages
+    # WARNING: this is a makeshift solution, it works (I hope) but it possibly can be done cleaner.
+
+    with open(pkg_list, "r") as file:
+        json_file = json.load(file)
+
+    for key, value in json_file["LFS"].items():
+        name = key
+        version = value["Version"]
+        try:
+            priority = value["Priority"]
+        except KeyError:
+            priority = ""
+
+        try:
+            link = value["Link"]
+        except KeyError:
+            link = ""
+
+        try:
+            checksum = value["MD5"]
+        except KeyError:
+            checksum = ""
+            print(f"-> !! MD5 for {package} doesn't exist!")
+
+        package_names = name.splitlines()
+        versions = version.splitlines()
+
+        packages = {}
+        packages.update(
+            {package_names[i]: versions[i] for i in range(len(package_names))}
+        )
+
+        for key in packages:
+            if priority:
+                package = key
+                version = packages[key]
+                local_version = GetVersion(package, version, debug)
+                if local_version == version:
+                    pass
+                else:
+                    print(
+                        f"-> !! Package script for {package} ({local_version}) doesn't match the package version {version}! Redownloading package..."
+                    )
+                    r = requests.get(
+                        url=f"{repository}/packages/scripts/lfs/{package[0]}/{package}/fempkg.sh",
+                        allow_redirects=True,
+                    )
+                    if r == "":
+                        error("fatal_package_download_error")
+                    if "404" in str(r):
+                        error("404")
+                # Prioritizing the packages
+                if link:
+                    print(f"-> Downloading package {package}")
+                    pkgs_path = f"{os.getcwd()}/packages/src/"
+                    pkg_file = re.search(r"([^\/]+$)", link).group()
+                    if not os.path.exists(f"{os.getcwd()}/packages/src/{package[0]}"):
+                        os.mkdir(f"{os.getcwd()}/packages/src/{package[0]}")
+                    if not os.path.exists(f"{os.getcwd()}/packages/src/{package[0]}/{package}"):
+                        os.mkdir(f"{os.getcwd()}/packages/src/{package[0]}/{package}")
+                    if not os.path.exists(f"{pkgs_path}/{package[0]}/{package}/{pkg_file}"):
+                        pretty_downloader.download(link, file_path=f"{pkgs_path}/{package[0]}/{package}/")
+                else:
+                    print(f"-> Package {package} doesn't need to be downloaded.")
+
+    print(f"-> Done downloading all packages, prepering the install environment.")
+
+
+def check_and_redownload(repository, package, version, debug):
+    local_version = get_version(package, version, debug)
+    if local_version == version:
+        return
+
+    print(
+        f"-> !! Package script for {package} ({local_version}) doesn't match the package version {version}! Redownloading package..."
+    )
+
+    url = f"{repository}/packages/scripts/lfs/{package[0]}/{package}/fempkg.sh"
+    r = requests.get(url, allow_redirects=True)
+
+    if not r.content:
+        error("fatal_package_download_error")
+    if "404" in str(r):
+        error("404")
+
+def get_version(package: str, version: str, debug: bool):
+    import os
+
+    printdebug(f"Checking {package}", debug)
+    package_file = (
+        f"{os.getcwd()}/packages/scripts/lfs/{package[0]}/{package}/fempkg.sh"
+    )
+    try:
+        return f"{open(package_file).read()[2:]}"
+    except FileNotFoundError:
+        print(f"-> !! {package} package_file not found.")
+        try:
+            f = open(package_file, "w")
+        except FileNotFoundError:
+            try:
+                os.mkdir(package_file[:-9])
+            except FileExistsError:
+                pass
+            f = open(package_file, "w")
+            f.write(f"# {version}")
+            f.close()
+
+
+def printdebug(string: str, debug: bool):
+    if debug == True:
+        print(f"(d) {string}")
